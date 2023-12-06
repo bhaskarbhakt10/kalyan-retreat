@@ -22,6 +22,8 @@ class Database
             $this->database = "tabor-divine";
         }
         $this->connection = new mysqli($this->hostname, $this->username, $this->password, $this->database);
+        $this->CreateTableRegister();
+        $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Email', 'VARCHAR(255) NOT NULL UNIQUE','Register_PhoneNo');
     }
 
     function connect()
@@ -33,7 +35,9 @@ class Database
     {
         $sql = "CREATE TABLE IF NOT EXISTS " . TABLE_REGISTER . " (
             Register_SrNo INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            Register_ID VARCHAR(255) NOT NULL,
+            Register_ID VARCHAR(255) NOT NULL UNIQUE,
+            Register_PhoneNo VARCHAR(10) NOT NULL UNIQUE,
+            Register_Email VARCHAR(255) NOT NULL UNIQUE,
             Register_Json JSON NOT NULL,
             Register_Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
@@ -44,6 +48,26 @@ class Database
             return false;
         }
     }
+    function AlterColumnInRegister($tablename,$column_to_add , $dataType_and_contraints, $afterColumn)
+    {
+        $sql = "SHOW COLUMNS FROM " . $tablename . " LIKE '$column_to_add'";
+        $result = $this->connect()->query($sql);
+        if ($result->num_rows === 0) {
+            /**
+             * 
+             * if query results in false create a column
+             * 
+             */
+            $sqlCreateColumn = "ALTER TABLE " . $tablename . " ADD COLUMN $column_to_add $dataType_and_contraints AFTER $afterColumn";
+            if ($this->connect()->query($sqlCreateColumn) === TRUE) {
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
 
     function __destruct()
     {

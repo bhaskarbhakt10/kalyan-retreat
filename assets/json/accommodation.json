@@ -1,0 +1,16 @@
+{
+    "accommodation": [
+        {
+            "name": "Dormitory",
+            "code": "D"
+        },
+        {
+            "name": "Room",
+            "code": "R"
+        },
+        {
+            "name": "Ac Room",
+            "code": "AC"
+        }
+    ]
+}

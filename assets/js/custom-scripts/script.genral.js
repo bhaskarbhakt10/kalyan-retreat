@@ -29,3 +29,33 @@ function isRequired(formValues) {
 
 
 }
+
+
+const AddRequiredMark = () => {
+    const required_Fields = jQuery('[required]').toArray();
+    required_Fields.forEach(required_Field => {
+        console.log($(required_Field).closest('label'));
+        $(required_Field).closest('.field-parent').find('label').addClass('mandatory-mark');
+    });
+}
+AddRequiredMark();
+
+
+const genRegNo = () => {
+
+}
+
+$(document.body).on('change', '[name=tdra_language],[name=tdra_accommodation]', function (e) {
+
+    // console.log(e);
+    if (
+        ($(`[name=tdra_language]`).val() !== '' && $(`[name=tdra_language]`).val() !== null)
+        &&
+        ($(`[name=tdra_accommodation]`).val() !== '' && $(`[name=tdra_accommodation]`).val() !== null)
+    ) {
+        const language = $(`[name=tdra_language]`).val();
+        const accommodation = $(`[name=tdra_accommodation]`).val();
+
+        $(`[name="tdra_registration_number"]`).val(`TABOR/${language}/${accommodation}`);
+    }
+});

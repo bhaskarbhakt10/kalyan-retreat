@@ -1,0 +1,28 @@
+{
+    "languauges": [
+        {
+            "name": "English",
+            "code": "ENGLISH"
+        },
+        {
+            "name": "Hindi",
+            "code": "HINDI"
+        },
+        {
+            "name": "Konkani",
+            "code": "KONKANI"
+        },
+        {
+            "name": "Marathi",
+            "code": "MARATHI"
+        },
+        {
+            "name": "Malyalam",
+            "code": "MALYALAM"
+        },
+        {
+            "name": "Tamil",
+            "code": "TAMIL"
+        }
+    ]
+}

@@ -7,3 +7,11 @@
 .remove-arrow {
     -moz-appearance: textfield;
 }
+.mandatory-mark{
+    position: relative;
+}
+.mandatory-mark::after{
+    content: '*';
+    color: #be123c;
+
+}
