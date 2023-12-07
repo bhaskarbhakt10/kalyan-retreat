@@ -17,7 +17,7 @@ if (!empty($_GET['q']) && !empty($_GET['key']) && array_key_exists('q', $_GET) &
 ?>
 
                 <div class="main form-<?php echo preg_replace('/ /', '-', $query) ?> bg-stone-100">
-                    <div class="main-container lg:max-w-[60%] mx-auto">
+                    <div class="main-container">
                         <?php require_once ROOT_PATH . 'retreat/forms/' . $query . '.php'; ?>
                     </div>
                 </div>
