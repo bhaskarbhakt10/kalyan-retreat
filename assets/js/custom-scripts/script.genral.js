@@ -56,6 +56,6 @@ $(document.body).on('change', '[name=tdra_language],[name=tdra_accommodation]', 
         const language = $(`[name=tdra_language]`).val();
         const accommodation = $(`[name=tdra_accommodation]`).val();
 
-        $(`[name="tdra_registration_number"]`).val(`TABOR/${language}/${accommodation}`);
+        $(`[name="tdra_registration_number"]`).val(`TAB/${language}/`);
     }
 });

@@ -10,9 +10,11 @@ class Register
     private $regId;
     private $phoneno;
     private $email;
+    private $aadharNo;
+    private $lang;
     private $detailsJson;
 
-    function __construct(&$regId = null, &$phoneno = null,&$email = null, &$detailsJson = null)
+    function __construct(&$regId = null, &$phoneno = null,&$email = null, &$aadharNo = null ,&$detailsJson = null, &$lang= null)
     {
         /**
          * 
@@ -29,6 +31,8 @@ class Register
          $this->regId = $regId;
          $this->phoneno = $phoneno;
          $this->email = $email;
+         $this->aadharNo = $aadharNo;
+         $this->lang = $lang;
          $this->detailsJson = $detailsJson;
 
         /**
@@ -37,8 +41,8 @@ class Register
          * 
          */
 
-         $this->InsertDetails();
-
+        $registrationId = $this->generateRegistrationID();
+         $this->InsertDetails($registrationId);
     }
 
     function GetAllDbRows()
@@ -54,23 +58,25 @@ class Register
 
 
 
-    function InsertDetails()
+    function InsertDetails($registrationId)
     {
-        $sql = "INSERT INTO " .TABLE_REGISTER ." (Register_ID,Register_PhoneNo,Register_Email,Register_Json) VALUES ('".$this->regId."','".$this->phoneno."','".$this->email."','".$this->detailsJson."') ";
+        echo $sql = "INSERT INTO " .TABLE_REGISTER ." (Register_ID, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_Json) VALUES ('".$registrationId."','".$this->phoneno."','".$this->email."','".$this->aadharNo."','".$this->detailsJson."') ";
         $results = $this->db->connect()->query($sql);
         if($results){
             return true;
         }
     }
 
-    function generateRegistrationID(&$lang, &$acc)
+    function generateRegistrationID()
     {   
-        $idCount = 0;
+        $reg = "TAB/".$this->lang."/#";
         if($this->GetAllDbRows() === false){
-
+            $idCount = 1;
         }
         else{
-
+            $idCount = $this->GetAllDbRows()->num_rows + 1;
         }
+
+        return $reg .= str_pad((string)$idCount,3,'0',STR_PAD_LEFT);
     }
 }

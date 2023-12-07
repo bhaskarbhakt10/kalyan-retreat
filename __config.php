@@ -37,6 +37,11 @@ if (!defined('TODAYS_DATE')) {
     $todays_date = $date->format('Y-m-d');
     define('TODAYS_DATE', $todays_date);
 }
+if (!defined('TODAYS_TIME')) {
+    $date = new DateTime('now');
+    $todays_date = $date->format('h:i:s a');
+    define('TODAYS_TIME', $todays_date);
+}
 
 /**
  * 
@@ -53,6 +58,15 @@ if (!defined("SERVER_IS_LIVE")) {
     define("SERVER_IS_LIVE", $serverLive);
 }
 
+/**
+ * 
+ * cipher
+ * 
+ */
+if (!defined('CIPHER')) {
+    $cipher = "aes-128-gcm";
+    define('CIPHER', $cipher);
+}
 
 
 /***
