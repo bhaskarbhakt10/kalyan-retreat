@@ -7,9 +7,9 @@ $accommodationArray = json_decode($accommodationjsons, true);
 
 
 ?>
-<div class="xxl:h-auto sm:h-screen flex items-center xl:max-w-[850px] lg:max-w-[70%] md:max-w-[80%] sm:max-w-[90%] mx-auto ">
+<div class="2xl:h-auto sm:h-screen flex items-center xl:max-w-[900px] lg:max-w-[70%] md:max-w-[80%] sm:max-w-[90%] mx-auto py-6 ">
 
-    <div class="sm:container mx-auto w-full lg:py-8 lg:px-8 md:ps-6 md:pe-6 ps-4 pe-4 py-5 rounded-xl shadow-lg shadow-zinc-200 bg-white">
+    <div class="sm:container mx-auto w-full lg:py-6 lg:px-6 md:ps-6 md:pe-6 ps-4 pe-4 py-5 rounded-xl shadow-lg shadow-zinc-200 bg-white">
         <div class="block w-full mb-5">
             <h1 class="text-4xl font-bold capitalize text-center "> Kalyan registration </h1>
         </div>
@@ -17,12 +17,12 @@ $accommodationArray = json_decode($accommodationjsons, true);
             <form action="<?php echo FORM_ACTION . 'action.register.php'; ?>" method="POST" id="register" class="register" novalidate>
                 <div class="grid grid-cols-1 gap-x-3 md:grid-cols-6">
 
-                    <div class="md:col-span-3 mb-3 field-parent">
+                    <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_fullname" class="block text-sm font-medium leading-7 text-gray-900"> Full Name </label>
                         <input type="text" name="tdra_fullname" id="tdra_fullname" placeholder="Jhon Doe" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
-                    <div class="md:col-span-3 mb-3 field-parent">
+                    <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_dob" class="block text-sm font-medium leading-7 text-gray-900"> DOB </label>
                         <input type="date" name="tdra_dob" id="tdra_dob" placeholder="20" class="block w-full rounded-md border-0 ring-inset ring-1 ring-gray-300 shadow-sm py-2 px-3 text-gray-900  remove-arrow focus:outline-none focus:ring focus:ring-violet-300" required />
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
@@ -30,7 +30,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
                 </div>
                 <div class="grid grid-cols-1 gap-x-3 md:grid-cols-6">
 
-                    <div class="md:col-span-3 mb-3 field-parent">
+                    <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_phone_number" class="block text-sm font-medium leading-7 text-gray-900"> Phone Number </label>
                         <div class="relative rounded-md shadow-sm ">
                             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -40,26 +40,26 @@ $accommodationArray = json_decode($accommodationjsons, true);
                             <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                         </div>
                     </div>
-                    <div class="md:col-span-3 mb-3 field-parent">
+                    <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_email" class="block text-sm font-medium leading-7 text-gray-900"> Email </label>
                         <input type="email" name="tdra_email" id="tdra_email" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required placeholder="example@email.com" />
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
-                    <div class="md:col-span-6 mb-3 field-parent">
+                    <div class="md:col-span-6 mb-2 field-parent">
                         <label for="tdra_aadhar_number" class="block text-sm font-medium leading-7 text-gray-900"> Aadhar Number </label>
                         <input type="number" name="tdra_aadhar_number" id="tdra_aadhar_number" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required />
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 ">
-                    <div class="col-span-12 mb-3 field-parent">
+                    <div class="col-span-12 mb-2 field-parent">
                         <label for="tdra_address" class="block text-sm leading-7 text-gray-900 font-medium"> Address </label>
                         <textarea name="tdra_address" id="tdra_address" class="w-full block rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-violet-300" rows="4" required placeholder="123, Buffalo Street NY, USA"></textarea>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                 </div>
                 <div class="grid class grid-cols-1 gap-x-3 md:grid-cols-6">
-                    <div class="md:col-span-3 mb-3 field-parent">
+                    <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_language" class="block text-sm leading-7 text-gray-900 font-medium"> Language </label>
                         <select name="tdra_language" id="tdra_language" class="block w-full py-2 px-3 text-gray-900 rounded-md ring-1 ring-inset border-0 ring-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-violet-300" required>
                             <option value="" hidden> Select a Language</option>
@@ -77,7 +77,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
                         </select>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
-                    <div class="md:col-span-3 mb-3 field-parent">
+                    <div class="md:col-span-3 mb-2 field-parent">
 
                         <label for="tdra_accommodation" class="block text-sm text-gray-900 font-medium leading-7"> Accommodation </label>
                         <select name="tdra_accommodation" id="tdra_accommodation" class="block w-full rounded-md py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-violet-300" required>

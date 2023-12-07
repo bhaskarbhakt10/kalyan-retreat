@@ -8,7 +8,10 @@
         const Response = $(this_form).find('#form-response');
         const FormValues = $(this_form).serializeArray();
         const RequiredFlag = isRequired(FormValues);
-        if (RequiredFlag === true) {
+        const NoError = checkIfFieldHasNoError(FormValues);
+        if (RequiredFlag === true && NoError === true) {
+            alert('proceed to sjax')
+            /*
             $.ajax({
                 url: action,
                 method: 'POST',
@@ -50,13 +53,15 @@
                             `
 
                         }
-
+                        Response.hide().fadeIn(1000);
                         $(Response).append(responseHtml);
                         setTimeout(() => {
                             $(this_form).get(0).reset();
-                            $(this_form).parent().find('[role="alert"]').remove();
+                            $(this_form).parent().find('[role="alert"]').fadeOut(1000, function() {
+                                $(this).remove();
+                              });
                             window.location.reload();
-                        }, 3*1000);
+                        }, 5*1000);
 
                     }
                 },
@@ -64,6 +69,7 @@
                     console.error(error);
                 },
             })
+            */
         }
     })
 
