@@ -11,7 +11,7 @@
         const NoError = checkIfFieldHasNoError(FormValues);
         if (RequiredFlag === true && NoError === true) {
             alert('proceed to sjax')
-            /*
+            
             $.ajax({
                 url: action,
                 method: 'POST',
@@ -69,7 +69,7 @@
                     console.error(error);
                 },
             })
-            */
+            
         }
     })
 

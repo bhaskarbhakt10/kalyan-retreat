@@ -30,6 +30,12 @@
         }
     })
 
+    /**
+     * 
+     * Phone Number
+     * 
+     */
+
     $(document.body).on('keyup', 'input[name=tdra_phone_number]', function (e) {
         const phone = new RegExp('^\\d{10}$');
         const thisVal = $(this).val();
@@ -54,6 +60,12 @@
             }
         }
     })
+
+    /**
+     * 
+     * Email
+     * 
+     */
 
     $(document.body).on('keyup', 'input[name="tdra_email"]', function (e) {
 
@@ -109,5 +121,36 @@
         $(this).closest('.field-parent').find('.validation-message').append(`<p class="error ">${messages.join(' & ')}</p>`);
 
     })
+
+
+    /**
+     * 
+     * Full name
+     * 
+     */
+    $(document.body).on('keyup','input[name="tdra_fullname"]', function(e){
+        // first name has alteast 3 characters and 3 in length
+        const firstNameRegex = new RegExp('^[a-zA-Z]{3,}(?: [a-zA-Z]+)?$');
+        
+
+        const name = $(this).val();
+        let messages = Array();
+        if(name.trim() === ""){
+            $(this).closest('.field-parent').addClass('has-error');
+            messages.push("Full Name Can't Empty");
+        }
+        else if(!firstNameRegex.test(name)){
+            $(this).closest('.field-parent').addClass('has-error');
+            messages.push('First Name Needs Atleast 3 Characters and No Digits');
+        }
+        
+        if ($(this).closest('.field-parent').find('.validation-message >*').length !== 0) {
+            $(this).closest('.field-parent').find('.validation-message>*').remove();
+        }
+
+        $(this).closest('.field-parent').find('.validation-message').append(`<p class="error ">${messages.join(' & ')}</p>`);
+
+    })
+
 
 }(jQuery))

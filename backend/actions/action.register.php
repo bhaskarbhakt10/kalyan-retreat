@@ -7,7 +7,8 @@ if (isset($_POST) && !empty($_POST)) {
     $response_Array = array();
     $response_Array['status'] = false;
     $response_Array['msg'] =  "Seems Like Input Fields Are Missing";
-
+    // print_r($_POST);
+    
     if (
         array_key_exists('tdra_fullname', $_POST) && array_key_exists('tdra_dob', $_POST) && array_key_exists('tdra_phone_number', $_POST) && array_key_exists('tdra_email', $_POST) && array_key_exists('tdra_aadhar_number', $_POST) && array_key_exists('tdra_address', $_POST) &&
         array_key_exists('tdra_language', $_POST) && array_key_exists('tdra_accommodation', $_POST)
@@ -47,4 +48,5 @@ if (isset($_POST) && !empty($_POST)) {
     }
 
     echo json_encode($response_Array);
+    
 }

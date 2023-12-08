@@ -1,8 +1,31 @@
 <?php
-error_reporting(1);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+/**
+ * 
+ * Database setting
+ * 
+ */
+if (!defined("SERVER_IS_LIVE")) {
+    $serverName = $_SERVER['SERVER_NAME'];
+    if ($serverName === 'localhost') {
+        $serverLive = false;
+    } else {
+        $serverLive = true;
+    }
+    define("SERVER_IS_LIVE", $serverLive);
+}
 
 if (!defined('BASE_FOLDER')) {
-    define('BASE_FOLDER', "/kalyan-retreat/");
+    if(SERVER_IS_LIVE){
+        $base = "/tabor/";
+    }
+    else{
+        $base = "/kalyan-retreat/";
+    }
+    define('BASE_FOLDER', $base);
 }
 /**
  * Root paths and folder
@@ -43,20 +66,7 @@ if (!defined('TODAYS_TIME')) {
     define('TODAYS_TIME', $todays_date);
 }
 
-/**
- * 
- * Database setting
- * 
- */
-if (!defined("SERVER_IS_LIVE")) {
-    $serverName = $_SERVER['SERVER_NAME'];
-    if ($serverName === 'localhost' || str_contains($serverName, 'ngrok-free.app')) {
-        $serverLive = false;
-    } else {
-        $serverLive = true;
-    }
-    define("SERVER_IS_LIVE", $serverLive);
-}
+
 
 /**
  * 

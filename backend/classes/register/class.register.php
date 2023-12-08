@@ -81,8 +81,7 @@ class Register
             } else {
                 return false;
             }
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -103,5 +102,17 @@ class Register
     {
         $registrationId = $this->generateRegistrationID();
         return $this->InsertDetails($registrationId);
+    }
+
+    function ShowData()
+    {
+
+        $sql = "SELECT * " . TABLE_REGISTER . " WHERE Register_Status=1";
+        $result = $this->db->connect()->query($sql);
+        if ($result->num_rows > 0) {
+            return $result;
+        } else {
+            return false;
+        }
     }
 }

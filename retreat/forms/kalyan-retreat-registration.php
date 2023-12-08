@@ -7,7 +7,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
 
 
 ?>
-<div class="2xl:h-auto sm:h-screen flex items-center xl:max-w-[900px] lg:max-w-[70%] md:max-w-[80%] sm:max-w-[90%] mx-auto py-6 ">
+<div class="2xl:h-auto 2xl:min-h-[720px] xl:min-h-full xl:h-screen sm:h-screen flex items-center xl:max-w-[900px] lg:max-w-[70%] md:max-w-[80%] sm:max-w-[90%] mx-auto py-6 ">
 
     <div class="sm:container mx-auto w-full lg:py-6 lg:px-6 md:ps-6 md:pe-6 ps-4 pe-4 py-5 rounded-xl shadow-lg shadow-zinc-200 bg-white">
         <div class="block w-full mb-5">
@@ -24,7 +24,12 @@ $accommodationArray = json_decode($accommodationjsons, true);
                     </div>
                     <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_dob" class="block text-sm font-medium leading-7 text-gray-900"> DOB </label>
-                        <input type="date" name="tdra_dob" id="tdra_dob" placeholder="20" class="block w-full rounded-md border-0 ring-inset ring-1 ring-gray-300 shadow-sm py-2 px-3 text-gray-900  remove-arrow focus:outline-none focus:ring focus:ring-violet-300" required />
+                        <div class="relative flexd datapicker-icon">
+                            <input type="text" name="tdra_dob" id="tdra_dob" placeholder="20" class="block w-full rounded-md border-0 ring-inset ring-1 ring-gray-300 shadow-sm py-2 px-3 text-gray-900  remove-arrow focus:outline-none focus:ring focus:ring-violet-300" readonly required />
+                            <button class="bg-red-600 block px-3 py-1 absolute inset-y-0 end-0 rounded-md border-0 z-10 text-white bg-violet-900 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 tarnsition-all" type="button">
+                                <i class="fa-duotone fa-calendar-days"></i>
+                            </button>
+                        </div>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                 </div>
@@ -37,8 +42,8 @@ $accommodationArray = json_decode($accommodationjsons, true);
                                 <span class="text-gray-900 sm:text-md">+91</span>
                             </div>
                             <input type="tel" name="tdra_phone_number" id="tdra_phone_number" class="block w-full rounded-md border-0 ps-11 py-2 px-3 text-gray-900 ring-inset ring-1 shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" placeholder="9096471732" required />
-                            <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                         </div>
+                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                     <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_email" class="block text-sm font-medium leading-7 text-gray-900"> Email </label>
