@@ -129,27 +129,31 @@
      * 
      */
     $(document.body).on('keyup','input[name="tdra_fullname"]', function(e){
-        // first name has alteast 3 characters and 3 in length
-        const firstNameRegex = new RegExp('^[A-Z][a-z]+(?: [A-Z][a-z]+)*$');
+       
+      
+        const firstNameRegex = new RegExp('^[A-Za-z]+(?:\\s[A-Za-z]+)?$');
         
 
-        const name = $(this).val();
-        let messages = Array();
-        if(name.trim() === ""){
-            $(this).closest('.field-parent').addClass('has-error');
-            messages.push("Full Name Can't Empty");
-        }
-        else if(!firstNameRegex.test(name)){
-            $(this).closest('.field-parent').addClass('has-error');
-            messages.push('invalid');
-        }
-        
-        if ($(this).closest('.field-parent').find('.validation-message >*').length !== 0) {
-            $(this).closest('.field-parent').find('.validation-message>*').remove();
-        }
+        const name = $(this).val().trim();
+    let messages = [];
 
-        $(this).closest('.field-parent').find('.validation-message').append(`<p class="error ">${messages.join(' & ')}</p>`);
+    if (name === "") {
+        $(this).closest('.field-parent').addClass('has-error');
+        messages.push("Full Name Can't Be Empty");
+    } else if (!firstNameRegex.test(name)) {
+        $(this).closest('.field-parent').addClass('has-error');
+        messages.push('Invalid');
+    } else {
+        $(this).closest('.field-parent').removeClass('has-error');
+    }
 
+    const validationMessage = $(this).closest('.field-parent').find('.validation-message');
+
+    if (validationMessage.children().length !== 0) {
+        validationMessage.children().remove();
+    }
+
+    validationMessage.append(`<p class="error">${messages.join(' & ')}</p>`);
     })
 
 

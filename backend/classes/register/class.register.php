@@ -98,6 +98,21 @@ class Register
         return $reg .= str_pad((string)$idCount, 3, '0', STR_PAD_LEFT);
     }
 
+    function DecryptData($datatodecrypt, $iv)
+    {
+        $encryptedData = $datatodecrypt;
+        $decryptionMethod = CIPHER;
+        $secretKey = KEY;
+        $iv = base64_decode($iv);
+        $decryptedData = openssl_decrypt($encryptedData, $decryptionMethod, $secretKey, 0, $iv);
+
+        if ($decryptedData === false) {
+            return openssl_error_string();
+        } else {
+            return $decryptedData;
+        }
+    }
+
     function Insertdatabse()
     {
         $registrationId = $this->generateRegistrationID();

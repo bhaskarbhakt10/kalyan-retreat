@@ -74,15 +74,14 @@ if (!defined('TODAYS_TIME')) {
  * 
  */
 if (!defined('CIPHER')) {
-    $cipher = "aes-128-gcm";
+    $cipher = "AES-256-CBC";
     define('CIPHER', $cipher);
 }
 
 if (!defined('KEY')) {
-    $key = '00112233445566778899aabbccddeeff';
+    $key = 'ThisIsASecretKey123';
     define('KEY', $key);
 }
-
 
 /***
  * 

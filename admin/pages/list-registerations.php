@@ -1,9 +1,5 @@
 <?php
 
-$cipher = CIPHER;
-$key = KEY;
-$ivlen = openssl_cipher_iv_length($cipher);
-$iv = openssl_random_pseudo_bytes($ivlen);
 
 ?>
 <div class="lg:max-w-[1200px] md:max-w-[90%] mx-auto px-3">
@@ -40,10 +36,10 @@ $iv = openssl_random_pseudo_bytes($ivlen);
                         $rowCount = 0;
                         if ($results->num_rows > 0) {
                             while ($row = $results->fetch_assoc()) {
-                               
-                                $aadharno = $row['Register_AadharNumber']; 
-
-                                         
+                                
+                                $encArray = json_decode($row['Register_Json'], true);
+                                $register->DecryptData($encArray['enc_aadhar'],$encArray['enc_iv']);
+                                
                                 $rowCount = $rowCount + 1;
                     ?>
                                 <tr class="odd:bg-white  even:bg-gray-50 border-b hover:bg-gray-100  text-black transition-all">

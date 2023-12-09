@@ -21,7 +21,6 @@ if (isset($_POST) && !empty($_POST)) {
         $aadharNo = $_POST['tdra_aadhar_number'];
 
         $lang = $_POST['tdra_language'];
-        $details = json_encode($_POST);
 
         $response_Array['msg'] =  "Some Fields Fields Are Empty";
 
@@ -30,11 +29,18 @@ if (isset($_POST) && !empty($_POST)) {
 
             $cipher = CIPHER;
             $key = KEY;
-            $ivlen = openssl_cipher_iv_length($cipher);
-            $iv = openssl_random_pseudo_bytes($ivlen);
+            $iv = random_bytes(openssl_cipher_iv_length($cipher));
             $tag = null;
+
+            
             $aadharenc = openssl_encrypt($aadharNo, $cipher, $key, $options = 0, $iv, $tag);
-            $aadharno = $aadharenc . "=>" .$iv ;
+            $aadharno = $aadharenc;
+            $_POST['enc_iv'] = base64_encode($iv);
+            $_POST['enc_aadhar'] = $aadharenc;
+
+            
+
+            $details = json_encode($_POST);
 
             $register = new Register($regID, $phoneNo, $email, $aadharno, $details, $lang);
 
