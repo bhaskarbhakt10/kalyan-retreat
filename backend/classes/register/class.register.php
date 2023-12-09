@@ -107,7 +107,7 @@ class Register
     function ShowData()
     {
 
-        $sql = "SELECT * " . TABLE_REGISTER . " WHERE Register_Status=1";
+         $sql = "SELECT * FROM " . TABLE_REGISTER . " WHERE Register_Status=1";
         $result = $this->db->connect()->query($sql);
         if ($result->num_rows > 0) {
             return $result;

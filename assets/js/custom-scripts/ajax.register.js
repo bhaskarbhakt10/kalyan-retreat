@@ -10,7 +10,7 @@
         const RequiredFlag = isRequired(FormValues);
         const NoError = checkIfFieldHasNoError(FormValues);
         if (RequiredFlag === true && NoError === true) {
-            alert('proceed to sjax')
+            // alert('proceed to sjax')
             
             $.ajax({
                 url: action,

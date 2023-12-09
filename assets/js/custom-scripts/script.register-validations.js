@@ -130,7 +130,7 @@
      */
     $(document.body).on('keyup','input[name="tdra_fullname"]', function(e){
         // first name has alteast 3 characters and 3 in length
-        const firstNameRegex = new RegExp('^[a-zA-Z]{3,}(?: [a-zA-Z]+)?$');
+        const firstNameRegex = new RegExp('^[A-Z][a-z]+(?: [A-Z][a-z]+)*$');
         
 
         const name = $(this).val();
@@ -141,7 +141,7 @@
         }
         else if(!firstNameRegex.test(name)){
             $(this).closest('.field-parent').addClass('has-error');
-            messages.push('First Name Needs Atleast 3 Characters and No Digits');
+            messages.push('invalid');
         }
         
         if ($(this).closest('.field-parent').find('.validation-message >*').length !== 0) {

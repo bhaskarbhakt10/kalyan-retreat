@@ -78,6 +78,11 @@ if (!defined('CIPHER')) {
     define('CIPHER', $cipher);
 }
 
+if (!defined('KEY')) {
+    $key = '00112233445566778899aabbccddeeff';
+    define('KEY', $key);
+}
+
 
 /***
  * 

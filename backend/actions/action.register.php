@@ -29,10 +29,12 @@ if (isset($_POST) && !empty($_POST)) {
 
 
             $cipher = CIPHER;
+            $key = KEY;
             $ivlen = openssl_cipher_iv_length($cipher);
             $iv = openssl_random_pseudo_bytes($ivlen);
-            $aadharno = openssl_encrypt($aadharNo, $cipher, $key, $options = 0, $iv, $tag);
-            // echo $original_plaintext = openssl_decrypt($aadharno, $cipher, $key, $options=0, $iv, $tag);
+            $tag = null;
+            $aadharenc = openssl_encrypt($aadharNo, $cipher, $key, $options = 0, $iv, $tag);
+            $aadharno = $aadharenc . "=>" .$iv ;
 
             $register = new Register($regID, $phoneNo, $email, $aadharno, $details, $lang);
 
