@@ -65,3 +65,12 @@ const AddRequiredMark = () => {
 AddRequiredMark();
 
 
+/**
+ * 
+ *  Datatables
+ * 
+ * 
+ */
+$('.data-table').DataTable( {
+    responsive: true
+} );
