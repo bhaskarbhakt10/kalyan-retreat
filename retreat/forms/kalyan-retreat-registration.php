@@ -18,7 +18,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
 
                     <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_fullname" class="block text-sm font-medium leading-7 text-gray-900"> Full Name </label>
-                        <input type="text" name="tdra_fullname" id="tdra_fullname" placeholder="Jhon Smith" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required>
+                        <input type="text" name="tdra_fullname" id="tdra_fullname" placeholder="John Smith" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                     <div class="md:col-span-3 mb-2 field-parent">
