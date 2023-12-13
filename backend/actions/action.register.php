@@ -41,7 +41,7 @@ if (isset($_POST) && !empty($_POST)) {
             
 
             $details = json_encode($_POST);
-
+            
             $register = new Register($regID, $phoneNo, $email, $aadharno, $details, $lang);
 
             if ($register->Insertdatabse()) {
@@ -52,6 +52,7 @@ if (isset($_POST) && !empty($_POST)) {
                 $response_Array['status'] = false;
                 $response_Array['msg'] =  "User Already Exists! Make Sure You Use An Unregisterd Email,Phone Number And Aadhar Card Number";
             }
+        
         }
     }
 

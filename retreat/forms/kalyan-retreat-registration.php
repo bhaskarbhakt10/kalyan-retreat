@@ -7,11 +7,10 @@ $accommodationArray = json_decode($accommodationjsons, true);
 
 
 ?>
-<div class="2xl:h-auto 2xl:min-h-[720px] xl:min-h-full xl:h-screen sm:h-screen flex items-center xl:max-w-[900px] lg:max-w-[70%] md:max-w-[80%] sm:max-w-[90%] mx-auto py-6 ">
-
+<div class="2xl:h-auto 2xl:min-h-[720px] xl:min-h-full xl:h-screen sm:h-screen flex items-center xl:max-w-[900px] lg:max-w-[70%] md:max-w-[80%] sm:max-w-[90%] mx-auto py-6 pt-0">
     <div class="sm:container mx-auto w-full lg:py-6 lg:px-6 md:ps-6 md:pe-6 ps-4 pe-4 py-5 rounded-xl shadow-lg shadow-zinc-200 bg-white">
         <div class="block w-full mb-5">
-            <h1 class="text-4xl font-bold capitalize text-center "> Kalyan registration </h1>
+            <h1 class="text-4xl font-bold capitalize text-center "> Tabor Ashram Registration Form </h1>
         </div>
         <div class="form-container mx-auto">
             <form action="<?php echo FORM_ACTION . 'action.register.php'; ?>" method="POST" id="register" class="register" novalidate>
@@ -19,13 +18,13 @@ $accommodationArray = json_decode($accommodationjsons, true);
 
                     <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_fullname" class="block text-sm font-medium leading-7 text-gray-900"> Full Name </label>
-                        <input type="text" name="tdra_fullname" id="tdra_fullname" placeholder="Jhon Doe" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required>
+                        <input type="text" name="tdra_fullname" id="tdra_fullname" placeholder="Jhon Smith" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                     <div class="md:col-span-3 mb-2 field-parent">
                         <label for="tdra_dob" class="block text-sm font-medium leading-7 text-gray-900"> DOB </label>
                         <div class="relative flexd datapicker-icon">
-                            <input type="text" name="tdra_dob" id="tdra_dob" placeholder="20" class="block w-full rounded-md border-0 ring-inset ring-1 ring-gray-300 shadow-sm py-2 px-3 text-gray-900  remove-arrow focus:outline-none focus:ring focus:ring-violet-300" readonly required />
+                            <input type="text" name="tdra_dob" id="tdra_dob" placeholder="dd/mm/yyyy" class="block w-full rounded-md border-0 ring-inset ring-1 ring-gray-300 shadow-sm py-2 px-3 text-gray-900  remove-arrow focus:outline-none focus:ring focus:ring-violet-300" readonly required />
                             <button class="bg-red-600 block px-3 py-1 absolute inset-y-0 end-0 rounded-md border-0 z-10 text-white bg-violet-900 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 tarnsition-all" type="button">
                                 <i class="fa-duotone fa-calendar-days"></i>
                             </button>
@@ -41,7 +40,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
                             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                 <span class="text-gray-900 sm:text-md">+91</span>
                             </div>
-                            <input type="tel" name="tdra_phone_number" id="tdra_phone_number" class="block w-full rounded-md border-0 ps-11 py-2 px-3 text-gray-900 ring-inset ring-1 shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" placeholder="9096471732" required />
+                            <input type="tel" name="tdra_phone_number" id="tdra_phone_number" class="block w-full rounded-md border-0 ps-11 py-2 px-3 text-gray-900 ring-inset ring-1 shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" placeholder="9096471356" required />
                         </div>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>

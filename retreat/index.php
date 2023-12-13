@@ -2,6 +2,7 @@
 // print_r($_GET);
 
 require_once dirname(__FILE__, 2) . '/common/header.php';
+require_once dirname(__FILE__, 2) . '/common/navigation.php';
 if (!empty($_GET['q']) && !empty($_GET['key']) && array_key_exists('q', $_GET) && array_key_exists('key', $_GET) && strcasecmp($_GET['key'], 'register') === 0) {
 
     $query = $_GET['q'];
