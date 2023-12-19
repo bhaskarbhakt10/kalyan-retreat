@@ -7,8 +7,8 @@
         <div class="my-2 pb-3">
             <h1 class="text-center text-3xl uppercase font-bold leading-7">Retreats Listing</h1>
         </div>
-        <div class="relative shadow-md sm:rounded-lg my-5">
-            <table class="data-table table table-auto w-full text-left border border-slate-250">
+        <div class="relative  sm:rounded-lg my-5">
+            <table class="data-table shadow-md table table-auto w-full text-left border border-slate-250">
                 <thead class="text-sm text-white font-normal uppercase tracking-wide bg-purple-600 ">
                     <th class="py-3 px-3">
                         Sr No

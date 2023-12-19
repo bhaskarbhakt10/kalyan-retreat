@@ -1,5 +1,5 @@
 (function ($) {
-    $(`input[name="tdra_dob"]`).datepicker({
+    $(`input[name="tdra_dob"],.tdra_morepdob`).datepicker({
         showAnim: 'slideDown',
         changeMonth: true,
         changeYear: true,

@@ -7,7 +7,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
 
 
 ?>
-<div class="2xl:h-auto 2xl:min-h-[720px] xl:min-h-full xl:h-screen sm:h-screen flex items-center xl:max-w-[900px] lg:max-w-[70%] md:max-w-[80%] sm:max-w-[90%] mx-auto py-6 pt-0">
+<div class="2xl:h-auto 2xl:min-h-[720px] flex items-center xl:max-w-[900px] lg:max-w-[70%] md:max-w-[80%] sm:max-w-[90%] mx-auto py-6 pt-0">
     <div class="sm:container mx-auto w-full lg:py-6 lg:px-6 md:ps-6 md:pe-6 ps-4 pe-4 py-5 rounded-xl shadow-lg shadow-zinc-200 bg-white">
         <div class="block w-full mb-5">
             <h1 class="text-4xl font-bold capitalize text-center "> Tabor Ashram Registration Form </h1>
@@ -32,9 +32,9 @@ $accommodationArray = json_decode($accommodationjsons, true);
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 gap-x-3 md:grid-cols-6">
+                <div class="grid grid-cols-1 gap-x-3 md:grid-cols-12">
 
-                    <div class="md:col-span-3 mb-2 field-parent">
+                    <div class="md:col-span-4 mb-2 field-parent">
                         <label for="tdra_phone_number" class="block text-sm font-medium leading-7 text-gray-900"> Phone Number </label>
                         <div class="relative rounded-md shadow-sm ">
                             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -44,43 +44,20 @@ $accommodationArray = json_decode($accommodationjsons, true);
                         </div>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
-                    <div class="md:col-span-3 mb-2 field-parent">
+                    <div class="md:col-span-4 mb-2 field-parent">
                         <label for="tdra_email" class="block text-sm font-medium leading-7 text-gray-900"> Email </label>
                         <input type="email" name="tdra_email" id="tdra_email" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required placeholder="example@email.com" />
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
-                    <div class="md:col-span-6 mb-2 field-parent">
+                    <div class="md:col-span-4 mb-2 field-parent">
                         <label for="tdra_aadhar_number" class="block text-sm font-medium leading-7 text-gray-900"> Aadhar Number </label>
                         <input type="number" name="tdra_aadhar_number" id="tdra_aadhar_number" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required />
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 ">
-                    <div class="col-span-12 mb-2 field-parent">
-                        <label for="tdra_address" class="block text-sm leading-7 text-gray-900 font-medium"> Address </label>
-                        <textarea name="tdra_address" id="tdra_address" class="w-full block rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-violet-300" rows="4" required placeholder="123, Buffalo Street NY, USA"></textarea>
-                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
-                    </div>
-                </div>
+
                 <div class="grid class grid-cols-1 gap-x-3 md:grid-cols-6">
-                    <div class="md:col-span-3 mb-2 field-parent">
-                        <label for="tdra_language" class="block text-sm leading-7 text-gray-900 font-medium"> Language </label>
-                        <select name="tdra_language" id="tdra_language" class="block w-full py-2 px-3 text-gray-900 rounded-md ring-1 ring-inset border-0 ring-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-violet-300" required>
-                            <option value="" hidden> Select a Language</option>
-                            <?php
-                            foreach ($languagesArray as $key => $language) {
-                                foreach ($language as $lang) {
-                            ?>
-                                    <option value="<?php echo $lang['code'] ?>"> <?php echo $lang['name']; ?></option>
-                            <?php
-                                }
-                            }
 
-                            ?>
-
-                        </select>
-                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
-                    </div>
                     <div class="md:col-span-3 mb-2 field-parent">
 
                         <label for="tdra_accommodation" class="block text-sm text-gray-900 font-medium leading-7"> Accommodation </label>
@@ -101,14 +78,104 @@ $accommodationArray = json_decode($accommodationjsons, true);
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
 
                     </div>
+                    <div class="md:col-span-3 mb-2 field-parent">
+                        <label for="tdra_language" class="block text-sm leading-7 text-gray-900 font-medium"> Language </label>
+                        <select name="tdra_language" id="tdra_language" class="block w-full py-2 px-3 text-gray-900 rounded-md ring-1 ring-inset border-0 ring-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-violet-300" required>
+                            <option value="" hidden> Select a Language</option>
+                            <?php
+                            foreach ($languagesArray as $key => $language) {
+                                foreach ($language as $lang) {
+                            ?>
+                                    <option value="<?php echo $lang['code'] ?>"> <?php echo $lang['name']; ?></option>
+                            <?php
+                                }
+                            }
 
+                            ?>
 
+                        </select>
+                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                    </div>
+
+                </div>
+
+                <div class="grid class grid-cols-1 gap-x-3 md:grid-cols-12">
+                    <div class="md:col-span-6 mb-2 field-parent">
+                        <label for="tdra_retreat" class="block text-sm leading-7 text-gray-900 font-medium"> Retreat </label>
+                        <select name="tdra_retreat" id="tdra_retreat" class="block w-full py-2 px-3 text-gray-900 rounded-md ring-1 ring-inset border-0 ring-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-violet-300" required>
+                            <option value="" hidden> Select a Retreat</option>
+                        </select>
+                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                    </div>
+                    <div class="md:col-span-3 mb-2 field-parent">
+                        <label for="tdra_retreatstartdate" class="block text-sm font-medium leading-7 text-gray-900"> Retreat Start Date </label>
+                        <input type="number" name="" id="tdra_retreatstartdate" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required readonly disabled />
+                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                    </div>
+                    <div class="md:col-span-3 mb-2 field-parent">
+                        <label for="tdra_retreatenddate" class="block text-sm font-medium leading-7 text-gray-900"> Retreat End Date </label>
+                        <input type="text" name="" id="tdra_retreatenddate" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required readonly disabled />
+                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                    </div>
+                </div>
+                <div class="grid class grid-cols-1 gap-x-3 md:grid-cols-12">
+                    <div class="md:col-span-12 mb-2 field-parent">
+                        <div class="flex items-center gap-x-2">
+                            <input type="checkbox" name="tdra_moreparticipants" id="tdra_moreparticipants" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" />
+                            <label for="tdra_moreparticipants" class=" text-sm font-medium leading-7 text-gray-900"> I wish to add more participants. </label>
+                        </div>
+                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                    </div>
+                    <div class="md:col-span-12 mb-2 field-parent" id="more-participants">
+                        <div class=" gap-x-3 flex">
+                            <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
+                                <label for="tdra_morepfullname" class="block text-sm font-medium leading-7 text-gray-900"> Full Name </label>
+                                <input type="text" name="tdra_morepfullname" id="tdra_morepfullname" placeholder="John Smith" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required>
+                                <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                            </div>
+                            <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
+                                <label for="tdra_morepdob" class="block text-sm font-medium leading-7 text-gray-900"> DOB </label>
+                                <div class="relative flexd datapicker-icon">
+                                    <input type="text" name="tdra_morepdob" id="tdra_morepdob" placeholder="dd/mm/yyyy" class="tdra_morepdob block w-full rounded-md border-0 ring-inset ring-1 ring-gray-300 shadow-sm py-2 px-3 text-gray-900  remove-arrow focus:outline-none focus:ring focus:ring-violet-300" readonly required />
+                                    <button class="bg-red-600 block px-3 py-1 absolute inset-y-0 end-0 rounded-md border-0 z-10 text-white bg-violet-900 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 tarnsition-all" type="button">
+                                        <i class="fa-duotone fa-calendar-days"></i>
+                                    </button>
+                                </div>
+                                <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                            </div>
+                            <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
+                                <label for="tdra_morepaadhar" class="block text-sm font-medium leading-7 text-gray-900"> Aadhar Number </label>
+                                <input type="number" name="tdra_morepaadhar" id="tdra_morepaadhar" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required />
+                                <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                            </div>
+                            <div class="grow basis-[10%] shrink-0 mb-2 field-parent">
+                                <div class="flex items-end justify-center h-full gap-x-2">
+                                    <button class="inline-block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-3 py-2 rounded-md border-2 border-green-600 green-600 hover:bg-green-300 transition ease-in delay-10 hover:text-white max-w-[40px] w-full">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+
+                                    <button class="inline-block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-3 py-2 rounded-md border-2 border-red-600 red-600 hover:bg-red-300 transition ease-in delay-10 hover:text-white max-w-[40px] w-full">
+                                        <i class="fa-duotone fa-trash"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 ">
+                    <div class="col-span-12 mb-2 field-parent">
+                        <label for="tdra_address" class="block text-sm leading-7 text-gray-900 font-medium"> Address </label>
+                        <textarea name="tdra_address" id="tdra_address" class="w-full block rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-violet-300" rows="2" required placeholder="123, Buffalo Street NY, USA"></textarea>
+                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                    </div>
                 </div>
                 <div class="block w-full pt-3">
                     <button class="py-3 px-10 text-white rounded-3xl bg-violet-900 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 uppercase font-medium tracking-wide transition-all"> Register </button>
                 </div>
                 <div class="form-response" id="form-response">
-                
+
                 </div>
             </form>
         </div>
