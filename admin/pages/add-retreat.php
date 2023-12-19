@@ -2,6 +2,9 @@
 $languagesjsons = file_get_contents(ROOT_PATH . 'assets/json/language.json');
 $languagesArray = json_decode($languagesjsons, true);
 
+$venuejsons = file_get_contents(ROOT_PATH . 'assets/json/venue.json');
+$venueArray = json_decode($venuejsons, true);
+
 
 
 ?>
@@ -30,7 +33,7 @@ $languagesArray = json_decode($languagesjsons, true);
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                     <div class="md:col-span-3 mb-2 field-parent">
-                        <label for="tdra_retreatedate" class="block text-sm font-medium leading-7 text-gray-900"> Start Date </label>
+                        <label for="tdra_retreatedate" class="block text-sm font-medium leading-7 text-gray-900"> End Date </label>
                         <div class="relative flexd datapicker-icon">
                             <input type="text" name="tdra_retreatedate" id="tdra_retreatedate" placeholder="dd/mm/yyyy" class="block w-full rounded-md border-0 ring-inset ring-1 ring-gray-300 shadow-sm py-2 px-3 text-gray-900  remove-arrow focus:outline-none focus:ring focus:ring-violet-300" readonly required />
                             <button class="bg-red-600 block px-3 py-1 absolute inset-y-0 end-0 rounded-md border-0 z-10 text-white bg-violet-900 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 tarnsition-all" type="button">
@@ -48,8 +51,17 @@ $languagesArray = json_decode($languagesjsons, true);
                         <label for="tdra_retreatvenue" class="block text-sm leading-7 text-gray-900 font-medium"> Retreat venue </label>
                         <select name="tdra_retreatvenue" id="tdra_retreatvenue" class="block w-full py-2 px-3 text-gray-900 rounded-md ring-1 ring-inset border-0 ring-gray-300 shadow-sm focus:outline-none focus:ring focus:ring-violet-300" required>
                             <option value="" hidden> Select a Venue</option>
-                            <option value="T.A"> Tabor Ashram</option>
-                            <option value="T.B"> Tabor Bhavan</option>
+                           
+                            <?php
+                            foreach ($venueArray as $key => $venue) {
+                                foreach ($venue as $v) {
+                            ?>
+                                    <option value="<?php echo $v['code'] ?>"> <?php echo $v['name']; ?></option>
+                            <?php
+                                }
+                            }
+
+                            ?>
                         </select>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>

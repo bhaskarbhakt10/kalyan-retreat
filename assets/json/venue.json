@@ -1,0 +1,12 @@
+{
+    "venues": [
+        {
+            "name": "Tabor Ashram",
+            "code": "T.A"
+        },
+        {
+            "name": "Tabor Bhavan",
+            "code": "T.B"
+        }
+    ]
+}

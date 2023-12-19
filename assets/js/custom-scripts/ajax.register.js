@@ -20,7 +20,7 @@
                 beforeSend: function () { },
                 complete: function () { },
                 success: function (response) {
-                    console.log(response);
+                    // console.log(response);
                     if(response !== ''){
                         const { status, msg } = JSON.parse(response);
                         let responseHtml;
