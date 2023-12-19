@@ -63,7 +63,7 @@
                                                 <i class="fa-solid fa-print"></i>
                                             </a>
 
-                                            <a class="print-pdf block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-2 py-1 rounded-md border-2 border-purple-600 text-purple-600 hover:bg-purple-300 transition ease-in delay-10 hover:text-white max-w-[100px] w-full" alt="View Pdf">
+                                            <a href="view-pdf.php" class="print-pdf block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-2 py-1 rounded-md border-2 border-purple-600 text-purple-600 hover:bg-purple-300 transition ease-in delay-10 hover:text-white max-w-[100px] w-full" alt="View Pdf">
                                                 <i class="fa-duotone fa-file-pdf"></i>
                                             </a>
 

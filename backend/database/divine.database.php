@@ -26,6 +26,7 @@ class Database
         $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Email', 'VARCHAR(255) NOT NULL UNIQUE','Register_PhoneNo');
         $this->AlterColumnInRegister(TABLE_REGISTER,'Register_AadharNumber', 'VARCHAR(255) NOT NULL UNIQUE','Register_Email');
         $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Status', 'BIT(1) DEFAULT 1','Register_Json');
+        $this->CreateTableRetreat();
     }
 
     function connect()
@@ -51,6 +52,28 @@ class Database
             return false;
         }
     }
+    function CreateTableRetreat()
+    {
+        $sql = "CREATE TABLE IF NOT EXISTS " . TABLE_RETREAT . " (
+            Retreat_SrNo INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            Retreat_ID VARCHAR(255) NOT NULL UNIQUE,
+            Retreat_Name VARCHAR(255) NOT NULL,
+            Retreat_StartDate VARCHAR(255) NOT NULL,
+            Retreat_EndDate VARCHAR(255) NOT NULL,
+            Retreat_Limit INT(10) NOT NULL,
+            Retreat_Venue VARCHAR(100) NOT NULL,
+            Retreat_Language VARCHAR(100) NOT NULL,
+            Retreat_IsActive BIT(1) NOT NULL DEFAULT 1,
+            Retreat_Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )";
+        $result = $this->connect()->query($sql);
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function AlterColumnInRegister($tablename,$column_to_add , $dataType_and_contraints, $afterColumn)
     {
         $sql = "SHOW COLUMNS FROM " . $tablename . " LIKE '$column_to_add'";

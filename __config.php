@@ -42,6 +42,25 @@ if (!defined("FORM_ACTION")) {
     $root_url = ROOT_URL . 'backend/actions/';
     define("FORM_ACTION", $root_url);
 }
+/**
+ * 
+ * Admin url
+ * 
+ */
+if (!defined("ADMIN_NAV")) {
+    $admin_nav = ROOT_URL . 'admin/index?q=';
+    define("ADMIN_NAV", $admin_nav);
+}
+
+/**
+ * 
+ * PDF
+ * 
+ */
+if (!defined("PDF_IMAGES")) {
+    $pdf_image = ROOT_URL . 'assets/images/PDF/';
+    define("PDF_IMAGES", $pdf_image);
+}
 
 
 /**
@@ -90,6 +109,10 @@ if (!defined('KEY')) {
  */
 
 if (!defined('TABLE_REGISTER')) {
-    $registerTabe = 'tdra_register';
-    define('TABLE_REGISTER', $registerTabe);
+    $registerTable = 'tdra_register';
+    define('TABLE_REGISTER', $registerTable);
+}
+if (!defined('TABLE_RETREAT')) {
+    $retreatTable = 'tdra_retreat';
+    define('TABLE_RETREAT', $retreatTable);
 }

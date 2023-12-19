@@ -1,6 +1,6 @@
 <?php
-require_once dirname(__DIR__) . '/classes/register/class.register.php';
 require_once dirname(__DIR__, 2) . '/__config.php';
+require_once ROOT_PATH . 'backend/classes/register/class.register.php';
 
 if (isset($_POST) && !empty($_POST)) {
 
