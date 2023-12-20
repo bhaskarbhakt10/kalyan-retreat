@@ -8,10 +8,11 @@
         const Response = $(this_form).find('#form-response');
         const FormValues = $(this_form).serializeArray();
         const RequiredFlag = isRequired(FormValues);
+        console.log(FormValues);
         const NoError = checkIfFieldHasNoError(FormValues);
         if (RequiredFlag === true && NoError === true) {
             // alert('proceed to sjax')
-            
+            /*
             $.ajax({
                 url: action,
                 method: 'POST',
@@ -69,7 +70,7 @@
                     console.error(error);
                 },
             })
-            
+            */
         }
     })
 

@@ -118,7 +118,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
                 </div>
-                <div class="grid class grid-cols-1 gap-x-3 md:grid-cols-12">
+                <div class="grid class grid-cols-1 gap-x-3 md:grid-cols-12" id="moreParticipants">
                     <div class="md:col-span-12 mb-2 field-parent">
                         <div class="flex items-center gap-x-2">
                             <input type="checkbox" name="tdra_moreparticipants" id="tdra_moreparticipants" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600" />
@@ -126,11 +126,11 @@ $accommodationArray = json_decode($accommodationjsons, true);
                         </div>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
-                    <div class="md:col-span-12 mb-2 field-parent" id="more-participants">
-                        <div class=" gap-x-3 flex">
+                    <div class="md:col-span-12 mb-2 field-parent hidden addmoreparticipants" id="more-Participants">
+                        <div class="gap-x-3 flex addmoreparticipants-row">
                             <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
                                 <label for="tdra_morepfullname" class="block text-sm font-medium leading-7 text-gray-900"> Full Name </label>
-                                <input type="text" name="tdra_morepfullname" id="tdra_morepfullname" placeholder="John Smith" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required>
+                                <input type="text" name="tdra_morepfullname" id="tdra_morepfullname" placeholder="John Smith" class="tdra_morepfullname block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required>
                                 <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                             </div>
                             <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
@@ -145,16 +145,16 @@ $accommodationArray = json_decode($accommodationjsons, true);
                             </div>
                             <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
                                 <label for="tdra_morepaadhar" class="block text-sm font-medium leading-7 text-gray-900"> Aadhar Number </label>
-                                <input type="number" name="tdra_morepaadhar" id="tdra_morepaadhar" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required />
+                                <input type="number" name="tdra_morepaadhar" id="tdra_morepaadhar" class="tdra_morepaadhar block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required />
                                 <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                             </div>
                             <div class="grow basis-[10%] shrink-0 mb-2 field-parent">
                                 <div class="flex items-end justify-center h-full gap-x-2">
-                                    <button class="inline-block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-3 py-2 rounded-md border-2 border-green-600 green-600 hover:bg-green-300 transition ease-in delay-10 hover:text-white max-w-[40px] w-full">
+                                    <button data-btn="add" class="inline-block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-3 py-2 rounded-md border-2 border-green-600 green-600 hover:bg-green-300 transition ease-in delay-10 hover:text-white max-w-[40px] w-full">
                                         <i class="fa-solid fa-plus"></i>
                                     </button>
 
-                                    <button class="inline-block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-3 py-2 rounded-md border-2 border-red-600 red-600 hover:bg-red-300 transition ease-in delay-10 hover:text-white max-w-[40px] w-full">
+                                    <button data-btn="remove"  class="inline-block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-3 py-2 rounded-md border-2 border-red-600 red-600 hover:bg-red-300 transition ease-in delay-10 hover:text-white max-w-[40px] w-full">
                                         <i class="fa-duotone fa-trash"></i>
                                     </button>
 

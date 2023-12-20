@@ -5,7 +5,7 @@
      * 
      * Aadhar number
      */
-    $(document.body).on('keyup', 'input[name=tdra_aadhar_number]', function (e) {
+    $(document.body).on('keyup', 'input[name=tdra_aadhar_number], .tdra_morepaadhar', function (e) {
         const aadhar = new RegExp('^\\d{12}$');
         const thisVal = $(this).val();
         const currentlength = $(this).val().length;
@@ -128,7 +128,7 @@
      * Full name
      * 
      */
-    $(document.body).on('keyup','input[name="tdra_fullname"]', function(e){
+    $(document.body).on('keyup','input[name="tdra_fullname"], .tdra_morepfullname', function(e){
        
       
         const firstNameRegex = new RegExp('^[A-Za-z]+(?:\\s[A-Za-z]+)?$');

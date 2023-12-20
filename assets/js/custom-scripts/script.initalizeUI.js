@@ -1,12 +1,19 @@
 (function ($) {
-    $(`input[name="tdra_dob"],.tdra_morepdob`).datepicker({
-        showAnim: 'slideDown',
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: "dd/mm/yy",
-        maxDate: new Date(),
-        yearRange: "-100:+0"
-    });
+    
+        $.datepicker.setDefaults({
+            showAnim: 'slideDown',
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy",
+            maxDate: new Date(),
+            yearRange: "-100:+0"
+        });
+    
+    
+    $(`input[name="tdra_dob"]`).datepicker();
+    $(`.tdra_morepdob`).datepicker();
+   
+
     $(`input[name="tdra_retreatsdate"] , input[name="tdra_retreatedate"]`).datepicker({
         showAnim: 'slideDown',
         changeMonth: true,
@@ -21,4 +28,11 @@
         $(this).find('input').datepicker("show");
         // $(`input[name="tdra_dob"]`).datepicker("show");
     })
+
+
+
+
+    
+
+    
 }(jQuery))
