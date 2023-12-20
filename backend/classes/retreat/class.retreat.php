@@ -25,7 +25,7 @@ class Retreat
          *
          */
 
-        $this->name = mysqli_real_escape_string($this->db->connect(), $name);
+        $this->name = $name;
         $this->startdate = $startdate;
         $this->enddate = $enddate;
         $this->limit = $limit;
@@ -84,7 +84,7 @@ class Retreat
 
             $fStartDate = $this->UpdateDateFormat($this->startdate);
             $fEndDate = $this->UpdateDateFormat($this->enddate);
-            $sql = "INSERT INTO " . TABLE_RETREAT . " (Retreat_ID , Retreat_Name, Retreat_StartDate, Retreat_EndDate, Retreat_Limit, Retreat_Venue, Retreat_Language) VALUES ('" . $retreatId . "','" . $this->name . "','" . $fStartDate . "','" . $fEndDate . "'," . $this->limit . ",'" . $this->venue . "','" . $this->lang . "') ";
+            $sql = "INSERT INTO " . TABLE_RETREAT . " (Retreat_ID , Retreat_Name, Retreat_StartDate, Retreat_EndDate, Retreat_Limit, Retreat_Venue, Retreat_Language) VALUES ('" . $retreatId . "','" . mysqli_real_escape_string($this->db->connect(), $this->name) . "','" . $fStartDate . "','" . $fEndDate . "'," . $this->limit . ",'" . $this->venue . "','" . $this->lang . "') ";
             $results = $this->db->connect()->query($sql);
             if ($results) {
                 return true;
