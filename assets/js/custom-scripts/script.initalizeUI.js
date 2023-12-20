@@ -10,7 +10,7 @@
         yearRange: "-100:+0"
     });
     }
-
+    InitDOB();
     $(`input[name="tdra_retreatsdate"] , input[name="tdra_retreatedate"]`).datepicker({
         showAnim: 'slideDown',
         changeMonth: true,
