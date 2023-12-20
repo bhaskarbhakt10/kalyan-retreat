@@ -32,38 +32,52 @@
         }
     });
 
-    /**
-     * 
-     * count rows
-     * 
-     */
-
-    function CountRows(all_inputs, all_inputsValue) {
-        all_inputs.forEach((all_input, n) => {
-            $(all_input).attr('name', 'option_' + (n + 1));
-            $(all_input).attr('id', 'option_' + (n + 1));
-            $(all_input).closest('.field-parent').find('label').attr('for', 'option_' + (n + 1));
-            $(all_input).closest('.field-parent').find('label').text('option ' + (n + 1));
-        });
-
-    }
-
+  
     /**
      * 
      * Add rows to add details for more participants
      * 
      */
 
-    // let Addbtn = 1;
+    let Addbtn = 1;
     $(document.body).on('click', '[data-btn="add"]', function (e) {
         e.preventDefault();
 
         const thisbtn = $(this);
         const thisrow = $(thisbtn).closest('.addmoreparticipants-row');
         const elementToAppend = $(thisrow.prop('outerHTML')).addClass('appended')
-        $(MorePartcipants).append(elementToAppend);
-        $(`.tdra_morepdob`).datepicker();
+        $(elementToAppend).find('input').addClass('appended-input');
+        const allnewinputs = $(elementToAppend).find('input').toArray();
+        const alloldinputs = $(thisrow).find('input').toArray();
+       
+        Addbtn = Addbtn +1;
+        
+
+
+        for (let index = 0; index < alloldinputs.length; index++) {
+            const element = alloldinputs[index];
+            const newinput = allnewinputs[index];
+            const getCurrentInputName = $(element).attr('name');
+       
+        
+            if(getCurrentInputName.split('-').length >1){
+                const baseName = getCurrentInputName.split('-').slice(0, -1).join('-');
+                $(newinput).attr('name', `${baseName}-${Addbtn}`);
+                $(newinput).attr('id', `${baseName}-${Addbtn}`);
+                $(newinput).closest('.field-parent').find('label').attr('for', `${baseName}-${Addbtn}`);
+            }
+            else{
+                $(newinput).attr('name', `${getCurrentInputName}-${Addbtn}`);
+                $(newinput).attr('id', `${getCurrentInputName}-${Addbtn}`);
+                $(newinput).closest('.field-parent').find('label').attr('for', `${getCurrentInputName}-${Addbtn}`);
+
+            }
+        }
+    
  
+        $(MorePartcipants).append(elementToAppend);
+
+        
 
     })
 
