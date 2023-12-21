@@ -4,9 +4,9 @@
      * initalization for ui elemets that are present on screen. NOT DYNAMIC ELEMENTS
      * 
      */
-   
-    $(`input[name="tdra_dob"]`).datepicker(DOBOPTIONS);
-    $(`[name=tdra_morepdob]`).datepicker(DOBOPTIONS);
+    console.log(window.DOBOPTIONS);
+    $(`input[name="tdra_dob"]`).datepicker(window.DOBOPTIONS);
+    // $(`[name=tdra_morepdob]`).datepicker(DOBOPTIONS);
    
 
     $(`input[name="tdra_retreatsdate"] , input[name="tdra_retreatedate"]`).datepicker({
@@ -26,4 +26,4 @@
 
 
     
-}(jQuery))
+})(jQuery);

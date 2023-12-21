@@ -3,7 +3,7 @@
  * Constants
  * 
  */
-const DOBOPTIONS = {
+window.DOBOPTIONS = {
     showAnim: 'slideDown',
     changeMonth: true,
     changeYear: true,
@@ -13,6 +13,7 @@ const DOBOPTIONS = {
     markerClassName: 'hasDatepicker',
 }
 
+// console.log(window.DOBOPTIONS); 
 
 
 /**

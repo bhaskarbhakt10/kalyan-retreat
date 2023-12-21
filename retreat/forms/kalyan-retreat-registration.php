@@ -126,41 +126,8 @@ $accommodationArray = json_decode($accommodationjsons, true);
                         </div>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
-                    <div class="md:col-span-12 mb-2 field-parent hidden addmoreparticipants" id="more-Participants">
-                        <div class="gap-x-3 flex addmoreparticipants-row">
-                            <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
-                                <label for="tdra_morepfullname" class="block text-sm font-medium leading-7 text-gray-900"> Full Name </label>
-                                <input type="text" name="tdra_morepfullname" id="tdra_morepfullname" placeholder="John Smith" class="tdra_morepfullname block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required>
-                                <div class="validation-message text-red-600 text-xs font-medium italic"></div>
-                            </div>
-                            <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
-                                <label for="tdra_morepdob" class="block text-sm font-medium leading-7 text-gray-900"> DOB </label>
-                                <div class="relative flexd datapicker--icon">
-                                    <input type="text" name="tdra_morepdob" id="tdra_morepdob" placeholder="dd/mm/yyyy" class="tdra_morepdob block w-full rounded-md border-0 ring-inset ring-1 ring-gray-300 shadow-sm py-2 px-3 text-gray-900  remove-arrow focus:outline-none focus:ring focus:ring-violet-300" readonly required />
-                                    <button class="bg-red-600 block px-3 py-1 absolute inset-y-0 end-0 rounded-md border-0 z-10 text-white bg-violet-900 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 tarnsition-all" type="button">
-                                        <i class="fa-duotone fa-calendar-days"></i>
-                                    </button>
-                                </div>
-                                <div class="validation-message text-red-600 text-xs font-medium italic"></div>
-                            </div>
-                            <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
-                                <label for="tdra_morepaadhar" class="block text-sm font-medium leading-7 text-gray-900"> Aadhar Number </label>
-                                <input type="number" name="tdra_morepaadhar" id="tdra_morepaadhar" class="tdra_morepaadhar block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required />
-                                <div class="validation-message text-red-600 text-xs font-medium italic"></div>
-                            </div>
-                            <div class="grow basis-[10%] shrink-0 mb-2 field-parent">
-                                <div class="flex items-end justify-center h-full gap-x-2">
-                                    <button data-btn="add" class="inline-block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-3 py-2 rounded-md border-2 border-green-600 green-600 hover:bg-green-300 transition ease-in delay-10 hover:text-white max-w-[40px] w-full">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </button>
-
-                                    <button data-btn="remove"  class="inline-block text-center cursor-pointer md:px-2 sm:py-1 sm:px-1 sm:py-1 px-3 py-2 rounded-md border-2 border-red-600 red-600 hover:bg-red-300 transition ease-in delay-10 hover:text-white max-w-[40px] w-full">
-                                        <i class="fa-duotone fa-trash"></i>
-                                    </button>
-
-                                </div>
-                            </div>
-                        </div>
+                    <div class="md:col-span-12 col-span-6 mb-2 field-parent hidden addmoreparticipants" id="more-Participants">
+                        
                     </div>
                 </div>
 
