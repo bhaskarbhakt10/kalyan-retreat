@@ -112,4 +112,14 @@ class Retreat
         $retreatId = $this->generateRetreatID();
         return $this->InsertRetreat($retreatId);
     }
+
+    function GetRetreatsByLang($lang){
+        $sql = "SELECT * FROM " . TABLE_RETREAT . " WHERE Retreat_IsActive=1 AND Retreat_Language='$lang'";
+        $results = $this->db->connect()->query($sql);
+        if ($results->num_rows > 0) {
+            return $results;
+        } else {
+            return false;
+        }
+    }
 }

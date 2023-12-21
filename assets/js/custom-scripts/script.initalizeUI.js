@@ -1,15 +1,12 @@
 (function ($) {
-
-    let DOBOPTIONS = {
-        showAnim: 'slideDown',
-        changeMonth: true,
-        changeYear: true,
-        dateFormat: "dd/mm/yy",
-        maxDate: new Date(),
-        yearRange: "-100:+0"
-    }
+    /**
+     * 
+     * initalization for ui elemets that are present on screen. NOT DYNAMIC ELEMENTS
+     * 
+     */
+   
     $(`input[name="tdra_dob"]`).datepicker(DOBOPTIONS);
-   // $(`.tdra_morepdob`).datepicker(DOBOPTIONS);
+    $(`[name=tdra_morepdob]`).datepicker(DOBOPTIONS);
    
 
     $(`input[name="tdra_retreatsdate"] , input[name="tdra_retreatedate"]`).datepicker({
@@ -21,24 +18,11 @@
     });
 
     
-    $(document.body).on('click', '.datapicker-icon', function (e) {
+    $('.datapicker-icon button').on('click',  function (e) {
         e.preventDefault();
-        // INITDOB($(this), DOBOPTIONS);
-        // $(this).find('input[type="text"]').datepicker("show");
-        // $(`input[name="tdra_dob"]`).datepicker("show");
+        $(this).closest('.field-parent').find('input[type="text"]').datepicker("show");
     })
-    const INITDOB =  (element, options) => {
-        
-       
-        console.error(element);
-        $(document).find(element).datepicker(options);
-    }
-
-    $(document).on('focus', '.tdra_morepdob', function (e) {
-        // const thisinput = $(this).attr('name');
-        // console.warn(thisinput);
-        // INITDOB($(`[name="${thisinput}"]`), DOBOPTIONS);
-    });
+    
 
 
     

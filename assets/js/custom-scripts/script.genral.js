@@ -1,3 +1,26 @@
+/**
+ * 
+ * Constants
+ * 
+ */
+const DOBOPTIONS = {
+    showAnim: 'slideDown',
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: "dd/mm/yy",
+    maxDate: new Date(),
+    yearRange: "-100:+0",
+    markerClassName: 'hasDatepicker',
+}
+
+
+
+/**
+ * 
+ * Constants
+ * 
+ */
+
 function isRequired(formValues) {
     let return_array = new Array();
     formValues.forEach(formValue => {
@@ -35,7 +58,7 @@ const checkIfFieldHasNoError = (formValues) => {
                 $(`[name=${name}]`).closest('.field-parent').find('.validation-message').append('<p class="error">' + $(`[name=${name}]`).closest('.field-parent').find('label').text() + ' has an error</p>')
                 return_array.push(0);
             }
-            
+
         }
         else {
             $(`[name=${name}]`).closest('.field-parent').removeClass('has-error');
@@ -71,6 +94,6 @@ AddRequiredMark();
  * 
  * 
  */
-$('.data-table').DataTable( {
+$('.data-table').DataTable({
     responsive: true
-} );
+});

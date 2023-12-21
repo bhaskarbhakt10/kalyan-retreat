@@ -13,7 +13,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
             <h1 class="text-4xl font-bold capitalize text-center "> Tabor Ashram Registration Form </h1>
         </div>
         <div class="form-container mx-auto">
-            <form action="<?php echo FORM_ACTION . 'action.register.php'; ?>" method="POST" id="register" class="register" novalidate>
+            <form action="<?php echo FORM_ACTION . 'action.register.php'; ?>" data-retreat=<?php echo FORM_ACTION . 'action.get_retreat.php'; ?> method="POST" id="register" class="register" novalidate>
                 <div class="grid grid-cols-1 gap-x-3 md:grid-cols-6">
 
                     <div class="md:col-span-3 mb-2 field-parent">
@@ -135,7 +135,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
                             </div>
                             <div class="grow basis-[28%] shrink-0 mb-2 field-parent">
                                 <label for="tdra_morepdob" class="block text-sm font-medium leading-7 text-gray-900"> DOB </label>
-                                <div class="relative flexd datapicker-icon">
+                                <div class="relative flexd datapicker--icon">
                                     <input type="text" name="tdra_morepdob" id="tdra_morepdob" placeholder="dd/mm/yyyy" class="tdra_morepdob block w-full rounded-md border-0 ring-inset ring-1 ring-gray-300 shadow-sm py-2 px-3 text-gray-900  remove-arrow focus:outline-none focus:ring focus:ring-violet-300" readonly required />
                                     <button class="bg-red-600 block px-3 py-1 absolute inset-y-0 end-0 rounded-md border-0 z-10 text-white bg-violet-900 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 tarnsition-all" type="button">
                                         <i class="fa-duotone fa-calendar-days"></i>
