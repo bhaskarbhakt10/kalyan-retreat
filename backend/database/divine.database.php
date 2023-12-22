@@ -23,8 +23,9 @@ class Database
         }
         $this->connection = new mysqli($this->hostname, $this->username, $this->password, $this->database);
         $this->CreateTableRegister();
-        $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Email', 'VARCHAR(255) NOT NULL UNIQUE','Register_PhoneNo');
-        $this->AlterColumnInRegister(TABLE_REGISTER,'Register_AadharNumber', 'VARCHAR(255) NOT NULL UNIQUE','Register_Email');
+        $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Email', 'VARCHAR(255) NOT NULL ','Register_PhoneNo');
+        $this->AlterColumnInRegister(TABLE_REGISTER,'Register_AadharNumber', 'VARCHAR(255) NOT NULL','Register_Email');
+        $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Retreat', 'VARCHAR(255) NOT NULL','Register_ID');
         $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Status', 'BIT(1) DEFAULT 1','Register_Json');
         $this->CreateTableRetreat();
     }
@@ -39,9 +40,10 @@ class Database
         $sql = "CREATE TABLE IF NOT EXISTS " . TABLE_REGISTER . " (
             Register_SrNo INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             Register_ID VARCHAR(255) NOT NULL UNIQUE,
-            Register_PhoneNo VARCHAR(10) NOT NULL UNIQUE,
-            Register_Email VARCHAR(255) NOT NULL UNIQUE,
-            Register_AadharNumber LONGTEXT NOT NULL UNIQUE,
+            Register_Retreat VARCHAR(255) NOT NULL,
+            Register_PhoneNo VARCHAR(10) NOT NULL ,
+            Register_Email VARCHAR(255) NOT NULL ,
+            Register_AadharNumber LONGTEXT NOT NULL,
             Register_Json JSON NOT NULL,
             Register_Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";

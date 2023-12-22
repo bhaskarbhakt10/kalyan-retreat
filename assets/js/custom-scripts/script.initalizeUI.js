@@ -4,7 +4,7 @@
      * initalization for ui elemets that are present on screen. NOT DYNAMIC ELEMENTS
      * 
      */
-    console.log(window.DOBOPTIONS);
+    // console.log(window.DOBOPTIONS);
     $(`input[name="tdra_dob"]`).datepicker(window.DOBOPTIONS);
     // $(`[name=tdra_morepdob]`).datepicker(DOBOPTIONS);
    

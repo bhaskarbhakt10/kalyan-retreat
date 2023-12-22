@@ -107,15 +107,18 @@ $accommodationArray = json_decode($accommodationjsons, true);
                         </select>
                         <div class="validation-message text-red-600 text-xs font-medium italic"></div>
                     </div>
-                    <div class="md:col-span-3 mb-2 field-parent">
+                    <div class="md:col-span-3 mb-2">
                         <label for="tdra_retreatstartdate" class="block text-sm font-medium leading-7 text-gray-900"> Retreat Start Date </label>
-                        <input type="number" name="" id="tdra_retreatstartdate" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required readonly disabled />
-                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                        <input type="text"  id="tdra_retreatstartdate" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required readonly disabled />
+                        
                     </div>
-                    <div class="md:col-span-3 mb-2 field-parent">
+                    <div class="md:col-span-3 mb-2">
                         <label for="tdra_retreatenddate" class="block text-sm font-medium leading-7 text-gray-900"> Retreat End Date </label>
-                        <input type="text" name="" id="tdra_retreatenddate" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required readonly disabled />
-                        <div class="validation-message text-red-600 text-xs font-medium italic"></div>
+                        <input type="text"  id="tdra_retreatenddate" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required readonly disabled />
+                    </div>
+                    <div class="md:col-span-12 mb-2">
+                        <label for="tdra_retreatvenue" class="block text-sm font-medium leading-7 text-gray-900"> Retreat End Date </label>
+                        <input type="text"  id="tdra_retreatvenue" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required readonly disabled />
                     </div>
                 </div>
                 <div class="grid class grid-cols-1 gap-x-3 md:grid-cols-12" id="moreParticipants">
