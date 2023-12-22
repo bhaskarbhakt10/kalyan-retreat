@@ -96,16 +96,7 @@
             $(newinput).attr('id', id__);
             $(newinput).closest('.field-parent').find('label').attr('for', for__);
 
-            const datePickerElement = $(`[name="${name__}"]`);
-            const existingDatePicker = datePickerElement.datepicker('widget');
 
-            if (existingDatePicker) {
-                // Destroy existing datepicker instance
-                datePickerElement.datepicker('destroy');
-            }
-
-            // Reinitialize datepicker
-            datePickerElement.datepicker(window.DOBOPTIONS);
         }
     };
 
@@ -126,6 +117,16 @@
         CreateUniqeName(allnewinputs, alloldinputs, Addbtn);
 
         $(`[name^="tdra_morepdob"]`).datepicker(window.DOBOPTIONS);
+        const datePickerElement = $(`[name^="tdra_morepdob"]`);
+        const existingDatePicker = datePickerElement.datepicker('widget');
+
+        if (existingDatePicker) {
+            // Destroy existing datepicker instance
+            datePickerElement.datepicker('destroy');
+        }
+
+        // Reinitialize datepicker
+        datePickerElement.datepicker(window.DOBOPTIONS);
     });
 
     /**
