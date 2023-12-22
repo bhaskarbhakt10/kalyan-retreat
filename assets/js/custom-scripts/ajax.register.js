@@ -3,7 +3,7 @@
 
     $(document.body).on('submit', '#register', function (e) {
         e.preventDefault();
-        const this_form = $(this);
+        const this_form = $(this);;
         const action = $(this_form).attr('action');
         const Response = $(this_form).find('#form-response');
         const FormValues = $(this_form).serializeArray();
@@ -13,6 +13,7 @@
         if (RequiredFlag === true && NoError === true) {
             // alert('proceed to sjax')
             /*
+            
             $.ajax({
                 url: action,
                 method: 'POST',
@@ -21,7 +22,7 @@
                 beforeSend: function () { },
                 complete: function () { },
                 success: function (response) {
-                    // console.log(response);
+                    console.log(response);
                     if(response !== ''){
                         const { status, msg } = JSON.parse(response);
                         let responseHtml;
@@ -71,6 +72,7 @@
                 },
             })
             */
+            
         }
     })
 

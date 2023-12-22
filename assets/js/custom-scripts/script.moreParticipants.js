@@ -55,6 +55,7 @@
                 $(MoreParticipantsBlock).find('.addmoreparticipants').removeClass('hidden');
                 $(MoreParticipantsBlock).find('.addmoreparticipants').append(MorePartcipantsFields);
                 $(`[name="tdra_morepdob"]`).datepicker(window.DOBOPTIONS);
+                $(this).val('1');
             }
         } else {
             if (!$(MoreParticipantsBlock).find('.addmoreparticipants').hasClass('hidden')) {
@@ -64,6 +65,7 @@
                 
                 Addbtn = 1;
                 Subbtn = Addbtn;
+                $(this).val('0');
             }
         }
     });
