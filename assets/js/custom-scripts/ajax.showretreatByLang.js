@@ -6,9 +6,13 @@
     const retreatStartDate = $(`#tdra_retreatstartdate`);
     const retreatEndDate = $(`#tdra_retreatenddate`);
     const retreatvenue = $(`#tdra_retreatvenue`);
+    
     // console.log(action);
     $(document.body).on('change', '[name="tdra_language"]', function (e) {
         const thisValue = $(this).val();
+        $(retreatEndDate).val('');
+        $(retreatStartDate).val('');
+        $(retreatvenue).val('');
         const retreatOptions = $(`[name="tdra_retreat"] `);
         if (thisValue !== '') {
             $.ajax({
@@ -70,7 +74,9 @@
 
     $(document.body).on('change', 'select[name="tdra_retreat"]', function (e) {
 
-        $(retreatEndDate, retreatStartDate, retreatvenue).val('');
+        $(retreatEndDate).val('');
+        $(retreatStartDate).val('');
+        $(retreatvenue).val('');
        
         
         const ThisField = $(this).find('option:selected');
