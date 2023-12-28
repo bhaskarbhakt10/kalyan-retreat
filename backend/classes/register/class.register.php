@@ -13,8 +13,10 @@ class Register
     private $aadharNo;
     private $lang;
     private $detailsJson;
+    private $moreParticipants;
+    private $retreat;
 
-    function __construct(&$regId = null, &$phoneno = null, &$email = null, &$aadharNo = null, &$detailsJson = null, &$lang = null)
+    function __construct(&$regId = null, &$phoneno = null, &$email = null, &$aadharNo = null, &$detailsJson = null, &$lang = null, &$moreParticipants = null, &$retreat = null)
     {
         /**
          * 
@@ -34,6 +36,8 @@ class Register
         $this->aadharNo = $aadharNo;
         $this->lang = $lang;
         $this->detailsJson = $detailsJson;
+        $this->moreParticipants = $moreParticipants;
+        $this->retreat = $retreat;
 
         /**
          * 
@@ -74,7 +78,10 @@ class Register
         $check_regId = $this->GetDataByCol('Register_ID', $registrationId);
 
         if (($check_phoneNmber === false) && ($check_email === false) && ($check_aadhar === false) && ($check_regId === false)) {
-            $sql = "INSERT INTO " . TABLE_REGISTER . " (Register_ID, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_Json) VALUES ('" . $registrationId . "','" . $this->phoneno . "','" . $this->email . "','" . $this->aadharNo . "','" . mysqli_real_escape_string($this->db->connect(), $this->detailsJson) . "') ";
+             
+            $finalJson = $this->generateMoreParRegistrationID($registrationId, $this->moreParticipants);
+
+            $sql = "INSERT INTO " . TABLE_REGISTER . " (Register_ID, Register_Retreat, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_MorePar, Register_Json) VALUES ('" . $registrationId . "','".$this->retreat."','" . $this->phoneno . "','" . $this->email . "','" . $this->aadharNo . "','".mysqli_real_escape_string($this->db->connect(), $finalJson)."','" . mysqli_real_escape_string($this->db->connect(), $this->detailsJson) . "') ";
             $results = $this->db->connect()->query($sql);
             if ($results) {
                 return true;
@@ -86,7 +93,7 @@ class Register
         }
     }
 
-    function generateRegistrationID()
+    private function generateRegistrationID()
     {
         $reg = "TAB/" . $this->lang . "/#";
         if ($this->GetAllDbRows() === false) {
@@ -96,6 +103,19 @@ class Register
         }
 
         return $reg .= str_pad((string)$idCount, 3, '0', STR_PAD_LEFT);
+    }
+
+    private function generateMoreParRegistrationID($registrationId, $moreinfoJson)
+    {
+        $moreinfo = json_decode($moreinfoJson, true);
+        $idCount = 0;
+        foreach ($moreinfo as $key => $moreinfoPar) {
+            $idCount += 1;
+            $moreinfo[$key]['ID'] = $registrationId ."-#PAR".str_pad((string)$idCount, 3, '0', STR_PAD_LEFT);;
+        }
+        
+        return json_encode($moreinfo);
+        
     }
 
     function DecryptData($datatodecrypt, $iv)

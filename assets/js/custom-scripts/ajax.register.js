@@ -8,12 +8,15 @@
         const Response = $(this_form).find('#form-response');
         const FormValues = $(this_form).serializeArray();
         const RequiredFlag = isRequired(FormValues);
+        const modof = jQuery(`.addmoreparticipants-row`).length > 0 ? jQuery(`.addmoreparticipants-row`).find(`input`).length / jQuery(`.addmoreparticipants-row`).length : null;
+        // FormValues = { name: mod, value: modof };
+        FormValues.push({ name: 'mod', value: modof });
         console.log(FormValues);
         const NoError = checkIfFieldHasNoError(FormValues);
         if (RequiredFlag === true && NoError === true) {
             // alert('proceed to sjax')
-            /*
-            
+
+
             $.ajax({
                 url: action,
                 method: 'POST',
@@ -22,7 +25,8 @@
                 beforeSend: function () { },
                 complete: function () { },
                 success: function (response) {
-                    console.log(response);
+                    // console.log(response);
+                    
                     if(response !== ''){
                         const { status, msg } = JSON.parse(response);
                         let responseHtml;
@@ -66,13 +70,14 @@
                         }, 5*1000);
 
                     }
+                    
                 },
                 error: function (error) {
                     console.error(error);
                 },
             })
-            */
-            
+
+
         }
     })
 

@@ -117,7 +117,7 @@ $accommodationArray = json_decode($accommodationjsons, true);
                         <input type="text"  id="tdra_retreatenddate" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required readonly disabled />
                     </div>
                     <div class="md:col-span-12 mb-2">
-                        <label for="tdra_retreatvenue" class="block text-sm font-medium leading-7 text-gray-900"> Retreat End Date </label>
+                        <label for="tdra_retreatvenue" class="block text-sm font-medium leading-7 text-gray-900"> Retreat Venue </label>
                         <input type="text"  id="tdra_retreatvenue" class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset shadow-sm ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300" required readonly disabled />
                     </div>
                 </div>

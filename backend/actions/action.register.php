@@ -39,9 +39,13 @@ if (isset($_POST) && !empty($_POST)) {
             $_POST['enc_aadhar'] = $aadharenc;
 
 
-            if (array_key_exists('tdra_moreparticipants', $_POST) && (int)$_POST['tdra_moreparticipants'] === 1) {
-                $moreParticipants = array();
+            $modby = (int)$_POST['mod'];
+            $moreParticipants = null;
+            if ((array_key_exists('tdra_moreparticipants', $_POST) && (int)$_POST['tdra_moreparticipants'] === 1) && $modby > 0) {
+                $_POST['more_participants'] = array();
                 $participantCount = 0;
+                $count = 1;
+                
                 foreach ($_POST as $post_key => $post_value) {
                     // $explodedkey = explode('-',$post_key);
                     if(
@@ -57,17 +61,40 @@ if (isset($_POST) && !empty($_POST)) {
                             (strpos($post_key,"tdra_morepaadhar") !== false) 
                         )
                         ){
-                            // $participantCount = ($participantCount + 1)/2;
-                            // print_r($post_key. "========" .$participantCount);
+                            $participantCount = ($participantCount + 1);
+                            $_POST['more_participants']['PAR_'.$count][rtrim($post_key,'-'.$count)] = $post_value;
+                            if($participantCount % $modby === 0){
+                                $count ++;
+                            }
+                            // print_r($post_key. "========" .$count);
+                           
                     }
                 }
-            }
+                foreach($_POST['more_participants'] as $mkey=>$morePar){
+                    
+                    foreach($morePar as $keym=>$value){
+                        if(strcasecmp('tdra_morepaadhar', $keym) === 0){
+                           
+                            $Morep_aadharenc = openssl_encrypt($value, $cipher, $key, $options = 0, $iv, $tag);
+                            $Morep_aadharno = $Morep_aadharenc;
+                            $_POST['more_participants'][$mkey]['enc']['enc_iv'] = base64_encode($iv);
+                            $_POST['more_participants'][$mkey]['enc']['enc_aadhar'] = $Morep_aadharenc;
+                        }
 
+                    }
+                }
+
+                $moreParticipants = $_POST['more_participants'];
+                $moreParticipantsJson = json_encode($moreParticipants);
+            }
 
             $details = json_encode($_POST);
 
-            /*
-            $register = new Register($regID, $phoneNo, $email, $aadharno, $details, $lang);
+            // print_r($moreParticipants);
+            // print_r($details);
+
+            
+            $register = new Register($regID, $phoneNo, $email, $aadharno, $details, $lang, $moreParticipantsJson, $retreat);
 
             if ($register->Insertdatabse()) {
                 $response_Array['status'] = true;
@@ -77,7 +104,7 @@ if (isset($_POST) && !empty($_POST)) {
                 $response_Array['status'] = false;
                 $response_Array['msg'] =  "User Already Exists! Make Sure You Use An Unregisterd Email,Phone Number And Aadhar Card Number";
             }
-            */
+            
         }
     }
 

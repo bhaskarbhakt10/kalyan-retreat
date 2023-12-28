@@ -44,6 +44,7 @@ class Database
             Register_PhoneNo VARCHAR(10) NOT NULL ,
             Register_Email VARCHAR(255) NOT NULL ,
             Register_AadharNumber LONGTEXT NOT NULL,
+            Register_MorePar JSON NOT NULL,
             Register_Json JSON NOT NULL,
             Register_Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
