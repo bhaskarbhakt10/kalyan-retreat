@@ -7,6 +7,19 @@
  */
 require_once dirname(__DIR__, 1) . '/__config.php';
 require_once ROOT_PATH . '/backend/packages/tcpdf/tcpdf.php';
+require_once ROOT_PATH . '/backend/classes/register/class.register.php';
+
+if(array_key_exists('q',$_GET)){
+
+    $regId = preg_replace('/__/','#',$_GET['q']);
+
+    $reg = new Register();
+    $alldetails = $reg->GetCompleteData($regId);
+    echo "<pre>";
+    print_r($alldetails);
+    echo "</pre>";
+
+
 
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF
@@ -28,6 +41,7 @@ class MYPDF extends TCPDF
     public function Footer()
     {
         $footer_image = PDF_IMAGES . 'header/logo.png';
+        $footer_image = 'FOOTER TEXT';
         $html = '';
         $html .= '<style>.header-image{width:90px;}</style>';
         $html .= '<table class=""><tr><td style="text-align:center"><img src="' . $footer_image . '" class="header-image"></td></tr></table>';
@@ -81,7 +95,9 @@ $pdf->SetFont('times', 'BI', 12);
 // add a page
 $pdf->AddPage();
 
-// set some text to print
+
+
+
 $main_body = "";
 
 // print a block of text using Write()
@@ -95,3 +111,7 @@ $pdf->Output('example_003.pdf', 'I');
 //============================================================+
 // END OF FILE
 //============================================================+
+}
+else{
+    exit();
+}

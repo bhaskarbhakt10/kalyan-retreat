@@ -78,10 +78,10 @@ class Register
         $check_regId = $this->GetDataByCol('Register_ID', $registrationId);
 
         if (($check_phoneNmber === false) && ($check_email === false) && ($check_aadhar === false) && ($check_regId === false)) {
-             
+
             $finalJson = $this->generateMoreParRegistrationID($registrationId, $this->moreParticipants);
 
-            $sql = "INSERT INTO " . TABLE_REGISTER . " (Register_ID, Register_Retreat, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_MorePar, Register_Json) VALUES ('" . $registrationId . "','".$this->retreat."','" . $this->phoneno . "','" . $this->email . "','" . $this->aadharNo . "','".mysqli_real_escape_string($this->db->connect(), $finalJson)."','" . mysqli_real_escape_string($this->db->connect(), $this->detailsJson) . "') ";
+            $sql = "INSERT INTO " . TABLE_REGISTER . " (Register_ID, Register_Retreat, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_MorePar, Register_Json) VALUES ('" . $registrationId . "','" . $this->retreat . "','" . $this->phoneno . "','" . $this->email . "','" . $this->aadharNo . "','" . mysqli_real_escape_string($this->db->connect(), $finalJson) . "','" . mysqli_real_escape_string($this->db->connect(), $this->detailsJson) . "') ";
             $results = $this->db->connect()->query($sql);
             if ($results) {
                 return true;
@@ -111,11 +111,10 @@ class Register
         $idCount = 0;
         foreach ($moreinfo as $key => $moreinfoPar) {
             $idCount += 1;
-            $moreinfo[$key]['ID'] = $registrationId ."-#PAR".str_pad((string)$idCount, 3, '0', STR_PAD_LEFT);;
+            $moreinfo[$key]['ID'] = $registrationId . "-#PAR" . str_pad((string)$idCount, 3, '0', STR_PAD_LEFT);;
         }
-        
+
         return json_encode($moreinfo);
-        
     }
 
     function DecryptData($datatodecrypt, $iv)
@@ -142,12 +141,28 @@ class Register
     function ShowData()
     {
 
-         $sql = "SELECT * FROM " . TABLE_REGISTER . " WHERE Register_Status=1";
+        $sql = "SELECT * FROM " . TABLE_REGISTER . " WHERE Register_Status=1";
         $result = $this->db->connect()->query($sql);
         if ($result->num_rows > 0) {
             return $result;
         } else {
             return false;
         }
+    }
+
+
+    function GetCompleteData($id)
+    {
+
+        $sql = "SELECT " . TABLE_REGISTER . ".*," . TABLE_RETREAT . ".* FROM `" . TABLE_REGISTER . "` INNER JOIN " . TABLE_RETREAT . " ON " . TABLE_REGISTER . ".Register_Retreat = " . TABLE_RETREAT . ".Retreat_ID WHERE " . TABLE_REGISTER . ".Register_Status=1 AND " . TABLE_RETREAT . ".Retreat_IsActive=1 AND " . TABLE_REGISTER . ".Register_ID='$id'";
+        $result = $this->db->connect()->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                return $row;
+            }
+        } else {
+            return false;
+        }
+
     }
 }
