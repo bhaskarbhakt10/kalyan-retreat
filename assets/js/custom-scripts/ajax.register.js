@@ -66,7 +66,7 @@
                             $(this_form).parent().find('[role="alert"]').fadeOut(1000, function() {
                                 $(this).remove();
                               });
-                            window.location.reload();
+                            // window.location.reload();
                         }, 5*1000);
 
                     }

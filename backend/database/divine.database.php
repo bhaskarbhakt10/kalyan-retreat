@@ -26,6 +26,7 @@ class Database
         $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Email', 'VARCHAR(255) NOT NULL ','Register_PhoneNo');
         $this->AlterColumnInRegister(TABLE_REGISTER,'Register_AadharNumber', 'VARCHAR(255) NOT NULL','Register_Email');
         $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Retreat', 'VARCHAR(255) NOT NULL','Register_ID');
+        $this->AlterColumnInRegister(TABLE_REGISTER,'Register_MorePar', 'JSON','Register_AadharNumber');
         $this->AlterColumnInRegister(TABLE_REGISTER,'Register_Status', 'BIT(1) DEFAULT 1','Register_Json');
         $this->CreateTableRetreat();
     }
@@ -44,8 +45,9 @@ class Database
             Register_PhoneNo VARCHAR(10) NOT NULL ,
             Register_Email VARCHAR(255) NOT NULL ,
             Register_AadharNumber LONGTEXT NOT NULL,
-            Register_MorePar JSON NOT NULL,
+            Register_MorePar JSON,
             Register_Json JSON NOT NULL,
+            Register_Status BIT(1) DEFAULT 1,
             Register_Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )";
         $result = $this->connect()->query($sql);

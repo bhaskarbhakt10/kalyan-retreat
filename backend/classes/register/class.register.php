@@ -16,7 +16,7 @@ class Register
     private $moreParticipants;
     private $retreat;
 
-    function __construct(&$regId = null, &$phoneno = null, &$email = null, &$aadharNo = null, &$detailsJson = null, &$lang = null, &$moreParticipants = null, &$retreat = null)
+    function __construct(&$regId = NULL, &$phoneno = NULL, &$email = NULL, &$aadharNo = NULL, &$detailsJson = NULL, &$lang = NULL, &$moreParticipants = NULL, &$retreat = NULL)
     {
         /**
          * 
@@ -79,9 +79,11 @@ class Register
 
         if (($check_phoneNmber === false) && ($check_email === false) && ($check_aadhar === false) && ($check_regId === false)) {
 
-            $finalJson = $this->generateMoreParRegistrationID($registrationId, $this->moreParticipants);
+            $finalJson__ = ($this->generateMoreParRegistrationID($registrationId, $this->moreParticipants) !== null) ? mysqli_real_escape_string($this->db->connect(),$this->generateMoreParRegistrationID($registrationId, $this->moreParticipants)) : NULL;
 
-            $sql = "INSERT INTO " . TABLE_REGISTER . " (Register_ID, Register_Retreat, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_MorePar, Register_Json) VALUES ('" . $registrationId . "','" . $this->retreat . "','" . $this->phoneno . "','" . $this->email . "','" . $this->aadharNo . "','" . mysqli_real_escape_string($this->db->connect(), $finalJson) . "','" . mysqli_real_escape_string($this->db->connect(), $this->detailsJson) . "') ";
+            $finalJson = ($finalJson__ !== NULL) ? $finalJson__ : NULL ; 
+
+            $sql = "INSERT INTO " . TABLE_REGISTER . " (Register_ID, Register_Retreat, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_MorePar, Register_Json) VALUES ('" . $registrationId . "','" . $this->retreat . "','" . $this->phoneno . "','" . $this->email . "','" . $this->aadharNo . "','" . $finalJson . "','" . mysqli_real_escape_string($this->db->connect(), $this->detailsJson) . "') ";
             $results = $this->db->connect()->query($sql);
             if ($results) {
                 return true;
@@ -107,14 +109,20 @@ class Register
 
     private function generateMoreParRegistrationID($registrationId, $moreinfoJson)
     {
-        $moreinfo = json_decode($moreinfoJson, true);
+        $moreinfo = ($moreinfoJson !== NULL) ? json_decode($moreinfoJson, true) : NULL;
         $idCount = 0;
-        foreach ($moreinfo as $key => $moreinfoPar) {
-            $idCount += 1;
-            $moreinfo[$key]['ID'] = $registrationId . "-#PAR" . str_pad((string)$idCount, 3, '0', STR_PAD_LEFT);;
-        }
+        if($moreinfo !== NULL){
 
-        return json_encode($moreinfo);
+            foreach ($moreinfo as $key => $moreinfoPar) {
+                $idCount += 1;
+                $moreinfo[$key]['ID'] = $registrationId . "-#PAR" . str_pad((string)$idCount, 3, '0', STR_PAD_LEFT);;
+            }
+            
+            return json_encode($moreinfo);
+        }
+        else{
+            return NULL;
+        }
     }
 
     function DecryptData($datatodecrypt, $iv)

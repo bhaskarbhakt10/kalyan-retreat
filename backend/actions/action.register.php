@@ -87,8 +87,8 @@ if (isset($_POST) && !empty($_POST)) {
                 $moreParticipants = $_POST['more_participants'];
                 $moreParticipantsJson = json_encode($moreParticipants);
             }
-
             $details = json_encode($_POST);
+
 
             // print_r($moreParticipants);
             // print_r($details);

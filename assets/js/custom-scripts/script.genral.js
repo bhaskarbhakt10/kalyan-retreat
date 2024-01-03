@@ -8,7 +8,7 @@ window.DOBOPTIONS = {
     changeMonth: true,
     changeYear: true,
     dateFormat: "dd/mm/yy",
-    minDate: new Date(),
+    maxDate: new Date(),
     yearRange: "-100:+0",
     markerClassName: 'hasDatepicker',
 }
