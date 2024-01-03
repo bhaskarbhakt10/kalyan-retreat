@@ -128,52 +128,61 @@
      * Full name
      * 
      */
-    $(document.body).on('keyup','input[name="tdra_fullname"], .tdra_morepfullname', function(e){
-       
-      
+    $(document.body).on('keyup', 'input[name="tdra_fullname"], .tdra_morepfullname', function (e) {
+
+
         const firstNameRegex = new RegExp('^[A-Za-z]+(?:\\s[A-Za-z]+)?$');
-        
+
 
         const name = $(this).val().trim();
-    let messages = [];
+        let messages = [];
 
-    if (name === "") {
-        $(this).closest('.field-parent').addClass('has-error');
-        messages.push("Full Name Can't Be Empty");
-    } else if (!firstNameRegex.test(name)) {
-        $(this).closest('.field-parent').addClass('has-error');
-        messages.push('Invalid');
-    } else {
-        $(this).closest('.field-parent').removeClass('has-error');
-    }
+        if (name === "") {
+            $(this).closest('.field-parent').addClass('has-error');
+            messages.push("Full Name Can't Be Empty");
+        } else if (!firstNameRegex.test(name)) {
+            $(this).closest('.field-parent').addClass('has-error');
+            messages.push('Invalid');
+        } else {
+            $(this).closest('.field-parent').removeClass('has-error');
+        }
 
-    const validationMessage = $(this).closest('.field-parent').find('.validation-message');
+        const validationMessage = $(this).closest('.field-parent').find('.validation-message');
 
-    if (validationMessage.children().length !== 0) {
-        validationMessage.children().remove();
-    }
+        if (validationMessage.children().length !== 0) {
+            validationMessage.children().remove();
+        }
 
-    validationMessage.append(`<p class="error">${messages.join(' & ')}</p>`);
+        validationMessage.append(`<p class="error">${messages.join(' & ')}</p>`);
     })
 
 
 
     const UniqueAddhar = [];
-    $(document.body).on('blur', 'input[name=tdra_aadhar_number], .tdra_morepaadhar', function (e) {
-        
+    $(document.body).on('blur', '.tdra_morepaadhar', function (e) {
+
         $(this).closest('.field-parent').find('.validation-message>*').remove();
         $(this).closest('.field-parent').removeClass('has-error');
         const Aadharval = parseInt($(this).val());
-        if(!UniqueAddhar.includes(Aadharval)){
-            UniqueAddhar.push(Aadharval);
-        }
-        else{
-            $(this).closest('.field-parent').addClass('has-error');
-            $(this).closest('.field-parent').find('.validation-message').append(`<p class="error">Adhar number should be unique to individual</p>`)
 
-        }
+        if ($(`#more-Participants`).children().length !== 0) {
+            const Mainpart = parseInt($(`input[name=tdra_aadhar_number]`).val());
+            if(Mainpart !== ''){
+                UniqueAddhar.push(Mainpart)
+            }
 
-        // console.log(UniqueAddhar);
+            $('input[name=tdra_aadhar_number], .tdra_morepaadhar').trigger('keyup');
+
+            if (!UniqueAddhar.includes(Aadharval)) {
+                UniqueAddhar.push(Aadharval);
+            }
+            else {
+                $(this).closest('.field-parent').addClass('has-error');
+                $(this).closest('.field-parent').find('.validation-message').append(`<p class="error">Adhar number should be unique to individual</p>`)
+
+            }
+        }
+        
     })
 
 })(jQuery);
