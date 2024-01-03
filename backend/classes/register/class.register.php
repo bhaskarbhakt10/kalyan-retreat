@@ -83,7 +83,18 @@ class Register
 
             $finalJson = ($finalJson__ !== NULL) ? $finalJson__ : NULL ; 
 
-            $sql = "INSERT INTO " . TABLE_REGISTER . " (Register_ID, Register_Retreat, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_MorePar, Register_Json) VALUES ('" . $registrationId . "','" . $this->retreat . "','" . $this->phoneno . "','" . $this->email . "','" . $this->aadharNo . "','" . $finalJson . "','" . mysqli_real_escape_string($this->db->connect(), $this->detailsJson) . "') ";
+            // var_dump($finalJson);
+
+            if($finalJson !== NULL){
+
+                $sql = "INSERT INTO " . TABLE_REGISTER . " (Register_ID, Register_Retreat, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_MorePar, Register_Json) VALUES ('" . $registrationId . "','" . $this->retreat . "','" . $this->phoneno . "','" . $this->email . "','" . $this->aadharNo . "','" . $finalJson . "','" . mysqli_real_escape_string($this->db->connect(), $this->detailsJson) . "') ";
+            }
+            else{
+                $sql = "INSERT INTO " . TABLE_REGISTER . " (Register_ID, Register_Retreat, Register_PhoneNo, Register_Email, Register_AadharNumber, Register_MorePar, Register_Json) VALUES ('" . $registrationId . "','" . $this->retreat . "','" . $this->phoneno . "','" . $this->email . "','" . $this->aadharNo . "', NULL ,'" . mysqli_real_escape_string($this->db->connect(), $this->detailsJson) . "') ";
+
+            }
+
+            // var_dump($sql);
             $results = $this->db->connect()->query($sql);
             if ($results) {
                 return true;

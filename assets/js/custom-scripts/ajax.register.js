@@ -62,10 +62,11 @@
                         Response.hide().fadeIn(1000);
                         $(Response).append(responseHtml);
                         setTimeout(() => {
-                            $(this_form).get(0).reset();
                             $(this_form).parent().find('[role="alert"]').fadeOut(1000, function() {
                                 $(this).remove();
-                              });
+                            });
+                            $(this_form).get(0).reset();
+                            $('[name="tdra_moreparticipants"]').trigger('change');
                             // window.location.reload();
                         }, 5*1000);
 
