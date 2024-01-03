@@ -18,7 +18,7 @@ if (array_key_exists('q', $_GET)) {
     // print_r($alldetails);
 
     $encArray = json_decode($alldetails['Register_Json'], true);
-    $moreParticipants = json_decode($alldetails['Register_MorePar'], true);
+    $moreParticipants = !empty($alldetails['Register_MorePar']) && $alldetails['Register_MorePar'] !== NULL ? json_decode($alldetails['Register_MorePar'], true) : '';
 
     // print_r($moreParticipants);
     $mainTable = '';

@@ -13,6 +13,9 @@
         FormValues.push({ name: 'mod', value: modof });
         console.log(FormValues);
         const NoError = checkIfFieldHasNoError(FormValues);
+
+        $('input[name=tdra_aadhar_number], .tdra_morepaadhar').trigger('blur');
+
         if (RequiredFlag === true && NoError === true) {
             // alert('proceed to sjax')
 

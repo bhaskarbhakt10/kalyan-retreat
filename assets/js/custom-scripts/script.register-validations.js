@@ -9,7 +9,7 @@
         const aadhar = new RegExp('^\\d{12}$');
         const thisVal = $(this).val();
         const currentlength = $(this).val().length;
-        console.log(currentlength);
+        // console.log(currentlength);
         $(this).closest('.field-parent').find('.validation-message>*').remove();
         $(this).closest('.field-parent').removeClass('has-error');
 
@@ -156,5 +156,24 @@
     validationMessage.append(`<p class="error">${messages.join(' & ')}</p>`);
     })
 
+
+
+    const UniqueAddhar = [];
+    $(document.body).on('blur', 'input[name=tdra_aadhar_number], .tdra_morepaadhar', function (e) {
+        
+        $(this).closest('.field-parent').find('.validation-message>*').remove();
+        $(this).closest('.field-parent').removeClass('has-error');
+        const Aadharval = parseInt($(this).val());
+        if(!UniqueAddhar.includes(Aadharval)){
+            UniqueAddhar.push(Aadharval);
+        }
+        else{
+            $(this).closest('.field-parent').addClass('has-error');
+            $(this).closest('.field-parent').find('.validation-message').append(`<p class="error">Adhar number should be unique to individual</p>`)
+
+        }
+
+        // console.log(UniqueAddhar);
+    })
 
 })(jQuery);
