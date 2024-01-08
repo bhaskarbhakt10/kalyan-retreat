@@ -1,5 +1,5 @@
 (function ($) {
-
+    
 
     $(document.body).on('submit', '#register', function (e) {
         e.preventDefault();
@@ -14,10 +14,12 @@
         console.log(FormValues);
         const NoError = checkIfFieldHasNoError(FormValues);
 
-        $('input[name=tdra_aadhar_number], .tdra_morepaadhar').trigger('blur');
+        const UniqueAAdhar = FormHasUniqueAadhar();
+
+        // $('input[name=tdra_aadhar_number], .tdra_morepaadhar').trigger('blur');
 
         if (RequiredFlag === true && NoError === true) {
-            // alert('proceed to sjax')
+            alert('proceed to sjax')
 
 
             $.ajax({

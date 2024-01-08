@@ -44,6 +44,7 @@
         $(this).closest('.field-parent').find('.validation-message>*').remove();
         $(this).closest('.field-parent').removeClass('has-error');
 
+        // FormHasUniqueAadhar()
         if (!phone.test(thisVal)) {
             if (currentlength < 10) {
                 $(this).closest('.field-parent').addClass('has-error');
@@ -158,9 +159,11 @@
 
 
 
-    const UniqueAddhar = [];
+    // const UniqueAddhar = [];
+ 
     $(document.body).on('blur', '.tdra_morepaadhar', function (e) {
 
+        /*
         $(this).closest('.field-parent').find('.validation-message>*').remove();
         $(this).closest('.field-parent').removeClass('has-error');
         const Aadharval = parseInt($(this).val());
@@ -182,7 +185,17 @@
 
             }
         }
+        console.log(UniqueAddhar);
+        */
+        // FormHasUniqueAadhar()
+        // if(  === true ){
+
+        // }
+        // else{
+
+        // }
         
     })
+
 
 })(jQuery);

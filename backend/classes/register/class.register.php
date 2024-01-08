@@ -72,12 +72,12 @@ class Register
 
     private function InsertDetails($registrationId)
     {
-        $check_phoneNmber = $this->GetDataByCol('Register_PhoneNo', $this->phoneno);
-        $check_email = $this->GetDataByCol('Register_Email', $this->email);
-        $check_aadhar = $this->GetDataByCol('Register_AadharNumber', $this->aadharNo);
-        $check_regId = $this->GetDataByCol('Register_ID', $registrationId);
+        // $check_phoneNmber = $this->GetDataByCol('Register_PhoneNo', $this->phoneno);
+        // $check_email = $this->GetDataByCol('Register_Email', $this->email);
+        // $check_aadhar = $this->GetDataByCol('Register_AadharNumber', $this->aadharNo);
+        // $check_regId = $this->GetDataByCol('Register_ID', $registrationId);
 
-        if (($check_phoneNmber === false) && ($check_email === false) && ($check_aadhar === false) && ($check_regId === false)) {
+        // if (($check_phoneNmber === false) && ($check_email === false) && ($check_aadhar === false) && ($check_regId === false)) {
 
             $finalJson__ = ($this->generateMoreParRegistrationID($registrationId, $this->moreParticipants) !== null) ? mysqli_real_escape_string($this->db->connect(),$this->generateMoreParRegistrationID($registrationId, $this->moreParticipants)) : NULL;
 
@@ -101,9 +101,9 @@ class Register
             } else {
                 return false;
             }
-        } else {
-            return false;
-        }
+        // } else {
+        //     return false;
+        // }
     }
 
     private function generateRegistrationID()
@@ -183,5 +183,22 @@ class Register
             return false;
         }
 
+    }
+
+
+    function getRetreatBookedbyemail($email, $phone)
+    {
+        $sql = "SELECT Register_Retreat FROM " . TABLE_REGISTER . " WHERE Register_PhoneNo='$phone' AND Register_Email='$email' AND Register_Status =1";
+        $result = $this->db->connect()->query($sql);
+        if ($result->num_rows > 0) {
+            $reservedRetreat = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($reservedRetreat,$row['Register_Retreat']);
+            }
+            return $reservedRetreat;
+
+        } else {
+            return false;
+        }
     }
 }

@@ -30,6 +30,7 @@ function isRequired(formValues) {
         $(`[name=${name}]`).closest('.field-parent').find('.validation-message>*').remove();
         if ($(`[name=${name}]`).prop('required') === true && $(`[name=${name}]`).val() === "") {
             if ($(`[name=${name}]`).closest('.field-parent').find('.validation-message>*').length === 0) {
+                // console.log($(`[name=${name}]`));
                 $(`[name=${name}]`).closest('.field-parent').find('.validation-message').append('<p class="error">' + $(`[name=${name}]`).closest('.field-parent').find('label').text() + ' is Required</p>')
                 return_array.push(0);
             }
@@ -40,7 +41,7 @@ function isRequired(formValues) {
 
     });
 
-    // console.log(return_array);
+    console.log(return_array);
     if (return_array.includes(0)) {
         return false;
     }
@@ -87,6 +88,68 @@ const AddRequiredMark = () => {
     });
 }
 AddRequiredMark();
+
+
+
+
+function FormHasUniqueAadhar() {
+    if ($(`.tdra_morepaadhar`).length > 0) {
+        let returnFlag__ = false;
+        let return_array = new Array();
+        const more_aadhar_fields = $(`.tdra_morepaadhar`).toArray();
+        const moreAAdahr = new Array();
+        moreAAdahr.push(parseInt($(`[name="tdra_aadhar_number"]`).val()));
+        more_aadhar_fields.forEach(more__adhar => {
+            if($(more__adhar).val() !== ''){
+                moreAAdahr.push(parseInt($(more__adhar).val()));
+
+            }
+            else{
+               
+            }
+        });
+
+
+        let seen = new Set();
+        for (let index = 0; index < moreAAdahr.length; index++) {
+            const aadhar = moreAAdahr[index];
+
+            if (seen.has(aadhar)) {
+                $(`.tdra_morepaadhar`).closest('.field-parent').addClass('has-error');
+                $(`.tdra_morepaadhar`).closest('.field-parent').find('.validation-message').append(`<p class="error">Adhar number should be unique to individual</p>`);
+                
+                returnFlag__ = false;
+
+                return_array.push(0);
+                
+                // break;  
+            } else {
+                seen.add(aadhar);
+                return_array.push(1);
+               
+            }
+        }
+
+       
+
+        // console.log(return_array);
+        // console.log(seen);
+        if (return_array.includes(0)) {
+            return false;
+        }
+        else {
+            seen.clear();
+            return true;
+        }
+
+    } else {
+        // Handle the case when there are no additional Aadhar fields
+    }
+}
+
+
+
+
 
 
 /**

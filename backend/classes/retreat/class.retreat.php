@@ -2,6 +2,7 @@
 
 require_once dirname(__DIR__, 3) . '/__config.php';
 require_once ROOT_PATH . 'backend/database/divine.database.php';
+require_once ROOT_PATH . 'backend/functions/function.php';
 
 class Retreat
 {

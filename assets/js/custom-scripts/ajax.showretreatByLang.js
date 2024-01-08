@@ -13,12 +13,14 @@
         $(retreatEndDate).val('');
         $(retreatStartDate).val('');
         $(retreatvenue).val('');
-        const retreatOptions = $(`[name="tdra_retreat"] `);
+        const retreatOptions = $(`[name="tdra_retreat"]`);
+        const email  = ($(`[name="tdra_email"]`).val()!=='') ? $(`[name="tdra_email"]`).val() : null ;
+        const phoneNumber  = ($(`[name="tdra_phone_number"]`).val() !== '') ? $(`[name="tdra_phone_number"]`).val() : null ;
         if (thisValue !== '') {
             $.ajax({
                 url: action,
                 method: 'POST',
-                data: { lang: thisValue },
+                data: { lang: thisValue, email:email,phone:phoneNumber },
                 cache: false,
                 beforeSend: function () { },
                 complete: function () { },
